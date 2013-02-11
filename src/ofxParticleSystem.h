@@ -65,7 +65,7 @@ public:
 		}		
 	}
 	
-	virtual void updateAndDecay(float _amount)
+	virtual void updateAndDecay(float _amount, float dt = 1)
 	{
 		for(it = particles.begin(); it < particles.end(); it++)
 		{
@@ -78,40 +78,48 @@ public:
             }
             else
             {
-                (*it)->update();
+                (*it)->update(dt);
             }
 		}
 	}
     
     virtual void setDamping(float _damping)
     {
-		for(int i = 0; i < particles.size(); i++)
+		for(it = particles.begin(); it < particles.end(); it++)
 		{
-			particles[i]->setDamping(_damping);
-		}	        
+			(*it)->setDamping(_damping);
+        }
     }
     
     virtual void setVelocityLimit(float _vlimit)
     {
-		for(int i = 0; i < particles.size(); i++)
+        for(it = particles.begin(); it < particles.end(); it++)
 		{
-			particles[i]->setVelocityLimit(_vlimit);
+			(*it)->setVelocityLimit(_vlimit);
 		}
     }
     
     virtual void setAccerationLimit(float _alimit)
     {
-		for(int i = 0; i < particles.size(); i++)
+        for(it = particles.begin(); it < particles.end(); it++)
 		{
-			particles[i]->setAccerationLimit(_alimit);
+			(*it)->setAccerationLimit(_alimit);
 		}
     }
-    
+
+    virtual void randomize(float magnitude)
+    {
+        for(it = particles.begin(); it < particles.end(); it++)
+		{
+			(*it)->setAcc(ofVec3f(ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude)));
+		}
+    }
+
 	virtual void draw()
 	{
-		for(int i = 0; i < particles.size(); i++)
+        for(it = particles.begin(); it < particles.end(); it++)
 		{
-			particles[i]->draw(); 
+			(*it)->draw();
 		}
 	}
 	

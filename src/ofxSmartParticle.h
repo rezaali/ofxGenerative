@@ -86,13 +86,6 @@ public:
 			vel.limit(velLimit); 
 			pos += vel; 			
 			acc.set(0); 
-			float dis = pos.distance(home);
-			float a = 25.0*sphericalRadius/(.1+dis*dis); 
-			if(a > 255)
-			{
-				a = 255; 
-			}			
-			color.a = a; 
 		}				
 	}
 	
@@ -167,6 +160,8 @@ public:
 	
 	void setSphericalRadius(float _sphericalRadius) { sphericalRadius = _sphericalRadius; }
 	
+    float getSphericalRadius() { return sphericalRadius; }
+    
 	void setDistortion(bool _distort) { distort = _distort; }
 	
 	void toggleDistortion() { distort = !distort; }

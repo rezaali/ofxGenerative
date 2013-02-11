@@ -64,13 +64,13 @@ public:
         center->set(_center);
         resolution = _resolution;
 
-        _shape.simplify();
-        shape = _shape.getResampledByCount(resolution);        
+        shape = _shape.getResampledByCount(resolution); 
         
         ofxSmartParticle *last = NULL;
-        for (int i = 0; i < shape.size()-1; i++)
+        vector<ofPoint> &shapepoints = shape.getVertices();
+        for (int i = 0; i < shapepoints.size(); i++)
         {
-            ofVec3f v = shape[i];
+            ofVec3f v = shapepoints[i];
             ofxSmartParticle *sp = new ofxSmartParticle(ofVec3f(radius*v.x, radius*v.y, center->z));
             sp->setVelocityLimit(4);
             sp->setAccerationLimit(.25);

@@ -87,19 +87,24 @@ public:
 			acc.set(0);
             */
             
+            ppos = pos;
+            
             for(int i = 0; i < externalForces.size(); i++)
             {
             	acc+=(*externalForces[i]);
 			}
-			acc.limit(accLimit);
+			
+            acc.limit(accLimit);
+            
             vel.limit(velLimit);
+            
             pos += (pos - ppos)*damping + vel*dt+ acc*(dt*dt);
-     
+
             for(int i = 0; i < springForces.size(); i++)
             {
             	pos+=(*springForces[i])/(float)springForces.size();
 			}
-            ppos = pos;
+
             vel*=damping;
 			acc.set(0);
 		}
@@ -113,7 +118,7 @@ public:
     
     virtual void drawVertex()
     {
-        glColor4f(color.r/255.0, color.g/255.0, color.b/255.0, color.a/255.0);
+		ofSetColor(color); 
         glVertex3f(pos.x, pos.y, pos.z);
     }
 	
@@ -214,8 +219,8 @@ public:
 	ofVec3f& getPos() { return pos; }
 	ofVec3f& getHome() { return home; }
 	ofVec3f& getPpos() { return ppos; } 
-	ofVec3f& getVel() { return vel; } 
-	ofVec3f& getAcc() { return acc; } 	
+	ofVec3f& getVel() { return vel; }
+	ofVec3f& getAcc() { return acc; }
 	ofColor& getColor() { return color; } 
 	void setColorAlpha(float _alpha) { color.a = _alpha; }
 	float getColorAlpha() { return color.a;  } 

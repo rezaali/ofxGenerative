@@ -30,7 +30,12 @@ using namespace std;
 
 ofxField2D::ofxField2D()
 {
-
+    u = NULL;
+    v = NULL;
+    u_prev = NULL;
+    v_prev = NULL;
+    dens = NULL;
+    dens_prev = NULL; 
 }
 
 ofxField2D::~ofxField2D()
@@ -45,6 +50,13 @@ ofxField2D::~ofxField2D()
 
 void ofxField2D::init(int xRes, int yRes, int width, int height)
 {
+    if(u!= NULL)    delete[] u;
+    if(v!= NULL)    delete[] v;
+    if(u_prev!= NULL)    delete[] u_prev;
+    if(v_prev!= NULL)    delete[] v_prev;
+    if(dens!= NULL)    delete[] dens;
+    if(dens_prev!= NULL)    delete[] dens_prev;
+    
     dimX = xRes; 
     dimY = yRes; 
     
@@ -55,7 +67,9 @@ void ofxField2D::init(int xRes, int yRes, int width, int height)
 	h = height;
     	
     renderType = 0;
-	
+	pointSize = 12;
+    lineWidth = 5;
+    
     dt = 0.00005; 
     diff = .0005; 
     visc = .001; 
@@ -174,6 +188,26 @@ void ofxField2D::setDt(float newDt){
 void ofxField2D::setIterations(int i){
 
 	iterations = i;
+}
+
+void ofxField2D::setPointSize(float _pointSize)
+{
+    pointSize = _pointSize;
+}
+
+void ofxField2D::setLineWidth(float _lineWidth)
+{
+    lineWidth = _lineWidth; 
+}
+
+float ofxField2D::getPointSize()
+{
+    return pointSize;
+}
+
+float ofxField2D::getLineWidth()
+{
+    return lineWidth;
 }
 
 ofPoint ofxField2D::getVector(int x, int y, bool averaged){
@@ -560,7 +594,8 @@ void ofxField2D::setRenderType(int _renderType)
 
 void ofxField2D::drawField()
 {
-    ofPushStyle();             
+    ofPushStyle();
+    ofSetLineWidth(lineWidth);
     glBegin(GL_LINES);
     for(int i = 0; i <=dimX; i++)
     {
@@ -579,7 +614,7 @@ void ofxField2D::drawDensity()
 {
     ofPushStyle();  
     ofEnableBlendMode(OF_BLENDMODE_ALPHA); 
-    glPointSize(12);
+    glPointSize(pointSize);
     glBegin(GL_POINTS);
     for(int i = 0; i <=dimX; i++)
     {
@@ -680,7 +715,7 @@ void ofxField2D::drawFieldLinesVertical()
 {
     ofPushStyle();  
     ofEnableBlendMode(OF_BLENDMODE_ALPHA); 		
-	ofSetLineWidth(5);
+	ofSetLineWidth(lineWidth);
 	for(int i = 0; i <=dimX; i++)
 	{
 		glBegin(GL_LINE_STRIP);
