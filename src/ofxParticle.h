@@ -58,7 +58,7 @@ public:
 		color = ofColor(255,0,0,255); 
 		fixed = false;
         setRadius(10);
-		mass = 1;
+		mass = 1.0;
         damping = 0.25;
 		accLimit = 5;
 		velLimit = 10;
@@ -98,7 +98,7 @@ public:
             
             vel.limit(velLimit);
             
-            pos += (pos - ppos)*damping + vel*dt+ acc*(dt*dt);
+            pos += (pos - ppos)*damping + vel*dt + acc*(dt*dt)*mass;
 
             for(int i = 0; i < springForces.size(); i++)
             {
@@ -249,14 +249,14 @@ protected:
 	float damping;
     float lifeTime;
     bool dead; 
-	float accLimit, velLimit; 
+	float accLimit; 
+    float velLimit;
 	ofColor color; 
 	
 	bool fixed; 
 	float radius;
     float hradius;
-	int pid; 
-	
+	int pid; 	
 };
 
 

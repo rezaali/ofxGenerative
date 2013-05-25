@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -22,53 +22,33 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#ifndef OFXBEHAVIOR
+#define OFXBEHAVIOR
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
+#include "ofMain.h"
 
-#include "ofxSpring.h"
-#include "ofxParticle.h"
-#include "ofxTrailParticle.h"
-#include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
+class ofxRParticle; 
 
-#include "ofxBoidParticle.h"
-#include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
-#include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
-#include "ofxHOCParticle.h"
-#include "ofxHOCParticleSystem.h"
-
-#endif
-
-#include "ofxField2D.h"
-#include "ofxFieldAgitator.h"
-
-#include "ofxSolver.h"
-#include "ofxVerletSolver.h"
-#include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
-#include "ofxRParticleRenderer.h"
-#include "ofxRParticleGlowieRenderer.h"
-#include "ofxBehavior.h"
-#include "ofxSphericalAttractionBehavior.h"
-#include "ofxHomingBehavior.h"
-#include "ofxDamperBehavior.h"
-#include "ofxDistorterBehavior.h"
-#include "ofxPerlinBehavior.h"
-#include "ofxSwarmBehavior.h"
-#include "ofxElectroStaticBehavior.h"
-#include "ofxBufferEffectorBehavior.h"
+class ofxBehavior           //Affects the Particle, could be a field, attractor, spring, etc. [add acceleration to Particle]
+{
+public: 
+    ofxBehavior();
+    virtual ~ofxBehavior();
+    void init();
+    virtual void update();
+    virtual void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
+    bool *getEnabledPtr();
+    bool isEnabled();
+    
+    float *getMagnitudePtr();
+    void setMagnitudePtr(float *_magnitude);
+    float getMagnitude();
+    void setMagnitude(float _magnitude);
+    
+protected:
+    bool bEnabled;
+    bool bAllocatedMagnitude;
+    float *magnitude;
+};
 
 #endif

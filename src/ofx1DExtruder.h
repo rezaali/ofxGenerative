@@ -177,6 +177,16 @@ public:
 		home = _home; 
 	}
     
+    float getHome()
+    {
+        return home;
+    }
+
+    float *getHomePtr()
+    {
+        return &home;
+    }
+    
     void setPosAndHome(float _home)
     {
         home = _home; 

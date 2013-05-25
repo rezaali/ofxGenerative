@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -22,53 +22,32 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#ifndef OFXSOLVER
+#define OFXSOLVER
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
-
-#include "ofxSpring.h"
-#include "ofxParticle.h"
-#include "ofxTrailParticle.h"
-#include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
-
-#include "ofxBoidParticle.h"
-#include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
-#include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
-#include "ofxHOCParticle.h"
-#include "ofxHOCParticleSystem.h"
-
-#endif
-
-#include "ofxField2D.h"
-#include "ofxFieldAgitator.h"
-
-#include "ofxSolver.h"
-#include "ofxVerletSolver.h"
 #include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
-#include "ofxRParticleRenderer.h"
-#include "ofxRParticleGlowieRenderer.h"
-#include "ofxBehavior.h"
-#include "ofxSphericalAttractionBehavior.h"
-#include "ofxHomingBehavior.h"
-#include "ofxDamperBehavior.h"
-#include "ofxDistorterBehavior.h"
-#include "ofxPerlinBehavior.h"
-#include "ofxSwarmBehavior.h"
-#include "ofxElectroStaticBehavior.h"
-#include "ofxBufferEffectorBehavior.h"
+
+struct Derivative
+{
+    ofVec3f dpdt;          // derivative of position: velocity
+    ofVec3f dvdt;          // derivative of velocity: acceleration
+};
+
+class ofxSolver             //Solves the Particle's Physical Simulation
+{
+public:
+    ofxSolver(float *_dt = NULL);
+    ~ofxSolver();
+    virtual void init();
+    virtual Derivative evaluate(ofxRParticle& particle, ofVec3f *iPos, ofVec3f *iVel, float dt, Derivative &d);
+    virtual void update(ofxRParticle& particle);
+    float *getDt();
+    void setDtPtr(float *_dt);
+    void setDt(float _dt);
+protected:
+    float *dt;
+    Derivative zero, a, b, c, d; 
+    bool bSelfAllocatedDt;
+};
 
 #endif

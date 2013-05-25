@@ -157,8 +157,6 @@ public:
 protected:
     vector<ofxParticle*>::iterator it;
     int uniqueIDs;
-    
 };
-
 
 #endif

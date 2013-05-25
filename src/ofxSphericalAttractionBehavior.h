@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -22,53 +22,35 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#ifndef OFXSPHERICALATTRACTIONBEHAVIOR
+#define OFXSPHERICALATTRACTIONBEHAVIOR
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
-
-#include "ofxSpring.h"
-#include "ofxParticle.h"
-#include "ofxTrailParticle.h"
-#include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
-
-#include "ofxBoidParticle.h"
-#include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
-#include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
-#include "ofxHOCParticle.h"
-#include "ofxHOCParticleSystem.h"
-
-#endif
-
-#include "ofxField2D.h"
-#include "ofxFieldAgitator.h"
-
-#include "ofxSolver.h"
-#include "ofxVerletSolver.h"
-#include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
-#include "ofxRParticleRenderer.h"
-#include "ofxRParticleGlowieRenderer.h"
 #include "ofxBehavior.h"
-#include "ofxSphericalAttractionBehavior.h"
-#include "ofxHomingBehavior.h"
-#include "ofxDamperBehavior.h"
-#include "ofxDistorterBehavior.h"
-#include "ofxPerlinBehavior.h"
-#include "ofxSwarmBehavior.h"
-#include "ofxElectroStaticBehavior.h"
-#include "ofxBufferEffectorBehavior.h"
+
+class ofxSphericalAttractionBehavior : public ofxBehavior
+{
+public:
+    ofxSphericalAttractionBehavior(); 
+    ~ofxSphericalAttractionBehavior();
+    void setup();
+    void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
+
+    ofVec3f *getPositionPtr();
+    void setPositionPtr(ofVec3f *_position);
+    ofVec3f& getPosition();
+    void setPosition(ofVec3f _position);
+    
+    float *getRadiusPtr();
+    void setRadiusPtr(float *_radius);
+    float getRadius();
+    void setRadius(float _radius);
+    
+    bool bAllocatedPosition;
+    ofVec3f *position;
+    
+    bool bAllocatedRadius;
+    float *radius;
+    
+};
 
 #endif

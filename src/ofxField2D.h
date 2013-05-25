@@ -50,14 +50,21 @@ public:
 	void setIterations(int i);
 	void setPointSize(float _pointSize);
     void setLineWidth(float _lineWidth);
-        
+    
+    void setRenderType(int _renderType);
+    
 	// get vector at position 
 	ofPoint getVector(int x, int y, bool averaged=false);
 	float getDensity(int x, int y);
 	int getRenderType();
-    void setRenderType(int _renderType);	
-	float getPointSize();
-    float getLineWidth();
+
+    float &getViscosity();
+    float &getDensityDecay();
+	float &getDifferential();
+	float &getDt();
+	int &getIterations();
+	float &getPointSize();
+    float &getLineWidth();
     
 	// create fluid field from pixels
 	void adaptFromImage(ofPixels & pix, float amt);
@@ -100,13 +107,13 @@ protected:
     void add_source(int DX, int DY, float* x, float* s, float dt); 
     void decay_density(int DX, int DY, float* x, float* s, float dt);
 	
-    float pointSize;
-    float lineWidth; 
-    int renderType; 
-    int dimX, dimY, size; 
-    float visc, diff, dt; 
+    int dimX, dimY, size;
     float xInterval, yInterval; 
-    float densityDecayFactor; 
+    float pointSize;
+    float lineWidth;
+    int renderType;
+    float visc, diff, dt;
+    float densityDecayFactor;
     int iterations; 
     float* u;               //x_vel
     float* v;               //y_vel    

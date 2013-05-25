@@ -156,8 +156,8 @@ void ofxField2D::update()
 
 void ofxField2D::input(float x, float y, float px, float py, float intensity)
 {
-    int i = (int)ofMap(x,0,ofGetWidth(),1,dimX); 
-    int j = (int)ofMap(y,0,ofGetHeight(),1,dimY);
+    int i = (int)ofMap(x,0,ofGetWidth(),1,dimX, true);
+    int j = (int)ofMap(y,0,ofGetHeight(),1,dimY, true);
     u[IX(i,j)] = (25.0*(x-px))*intensity; 
     v[IX(i,j)] = (25.0*(y-py))*intensity;
     dens[IX(i,j)] = 15.0 * intensity; 
@@ -173,7 +173,6 @@ void ofxField2D::setDensityDecay(float dd){
 	
     densityDecayFactor = dd;
 }
-
 
 void ofxField2D::setDifferential(float d){
 
@@ -200,14 +199,39 @@ void ofxField2D::setLineWidth(float _lineWidth)
     lineWidth = _lineWidth; 
 }
 
-float ofxField2D::getPointSize()
+float &ofxField2D::getPointSize()
 {
     return pointSize;
 }
 
-float ofxField2D::getLineWidth()
+float &ofxField2D::getLineWidth()
 {
     return lineWidth;
+}
+
+float &ofxField2D::getViscosity()
+{
+    return visc;
+}
+
+float &ofxField2D::getDensityDecay()
+{
+    return densityDecayFactor;
+}
+
+float &ofxField2D::getDifferential()
+{
+    return diff;
+}
+
+float &ofxField2D::getDt()
+{
+    return dt;
+}
+
+int &ofxField2D::getIterations()
+{
+    return iterations;
 }
 
 ofPoint ofxField2D::getVector(int x, int y, bool averaged){

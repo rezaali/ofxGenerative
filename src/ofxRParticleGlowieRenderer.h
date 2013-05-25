@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -22,53 +22,32 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#ifndef OFXRPARTICLEGLOWIERENDERER
+#define OFXRPARTICLEGLOWIERENDERER
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
-
-#include "ofxSpring.h"
-#include "ofxParticle.h"
-#include "ofxTrailParticle.h"
-#include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
-
-#include "ofxBoidParticle.h"
-#include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
+#include "ofMain.h"
 #include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
-#include "ofxHOCParticle.h"
-#include "ofxHOCParticleSystem.h"
-
-#endif
-
-#include "ofxField2D.h"
-#include "ofxFieldAgitator.h"
-
-#include "ofxSolver.h"
-#include "ofxVerletSolver.h"
-#include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
 #include "ofxRParticleRenderer.h"
-#include "ofxRParticleGlowieRenderer.h"
-#include "ofxBehavior.h"
-#include "ofxSphericalAttractionBehavior.h"
-#include "ofxHomingBehavior.h"
-#include "ofxDamperBehavior.h"
-#include "ofxDistorterBehavior.h"
-#include "ofxPerlinBehavior.h"
-#include "ofxSwarmBehavior.h"
-#include "ofxElectroStaticBehavior.h"
-#include "ofxBufferEffectorBehavior.h"
+
+class ofxRParticleGlowieRenderer : public ofxRParticleRenderer
+{
+public:
+    ofxRParticleGlowieRenderer();
+    ~ofxRParticleGlowieRenderer();
+    void setup();
+    void draw();
+    void setCamPtr(ofEasyCam *_cam);
+    void setAxisAngleOffsets(ofx1DExtruder *_xAxis, ofx1DExtruder *_yAxis, ofx1DExtruder *_zAxis); 
+    void billBoard(); 
+    void setGlowImage(ofImage *_glow);
+    
+protected:
+    ofImage *glow;
+    ofVec3f objectLookAt; 
+    ofEasyCam *cam;
+    ofx1DExtruder *xAxis;
+    ofx1DExtruder *yAxis;
+    ofx1DExtruder *zAxis;
+};
 
 #endif

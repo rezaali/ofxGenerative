@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -22,53 +22,29 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#ifndef OFXRPARTICLERENDERER
+#define OFXRPARTICLERENDERER
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
-
-#include "ofxSpring.h"
-#include "ofxParticle.h"
-#include "ofxTrailParticle.h"
-#include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
-
-#include "ofxBoidParticle.h"
-#include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
-#include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
-#include "ofxHOCParticle.h"
-#include "ofxHOCParticleSystem.h"
-
-#endif
-
-#include "ofxField2D.h"
-#include "ofxFieldAgitator.h"
-
-#include "ofxSolver.h"
-#include "ofxVerletSolver.h"
 #include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
-#include "ofxRParticleRenderer.h"
-#include "ofxRParticleGlowieRenderer.h"
-#include "ofxBehavior.h"
-#include "ofxSphericalAttractionBehavior.h"
-#include "ofxHomingBehavior.h"
-#include "ofxDamperBehavior.h"
-#include "ofxDistorterBehavior.h"
-#include "ofxPerlinBehavior.h"
-#include "ofxSwarmBehavior.h"
-#include "ofxElectroStaticBehavior.h"
-#include "ofxBufferEffectorBehavior.h"
+
+class ofxRParticleRenderer   //Renderers the particle(s)...
+{
+public:
+    ofxRParticleRenderer();
+    ~ofxRParticleRenderer();
+    void init();
+    virtual void setup(); 
+    virtual void draw();
+    void setParticlesPtr(vector<ofxRParticle> *_particles);
+    void setPointSize(float _pointSize);
+    float *getPointSizePtr();
+    void setAdditiveBlending(bool _bAdditiveBlending);
+    bool *getAdditiveBlendingPtr();
+    
+protected:
+    bool bAdditiveBlending;
+    vector<ofxRParticle> *particles;
+    float *pointSize;    
+};
 
 #endif
