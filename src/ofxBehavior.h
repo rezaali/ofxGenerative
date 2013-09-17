@@ -40,6 +40,7 @@ public:
     bool *getEnabledPtr();
     bool isEnabled();
     
+    void setEnabled(bool _bEnabled); 
     float *getMagnitudePtr();
     void setMagnitudePtr(float *_magnitude);
     float getMagnitude();

@@ -49,20 +49,20 @@ public:
 	
     void clear()
     {
-        vector<ofxSpring * >::iterator it;    
-        for ( it=springs.begin() ; it < springs.end(); it++ )
+        
+        for (vector<ofxSpring * >::iterator it = springs.begin(); it != springs.end(); ++it)
         {
-            delete (*it);
-            springs.erase(it);
+            ofxSpring *s = *it;
+            delete s;
         }                        
         springs.clear();         
     }
     
 	virtual void update(float dt = 1)
 	{
-		for(int i = 0; i < springs.size(); i++)
+		for(vector<ofxSpring*>::iterator it = springs.begin(); it != springs.end(); ++it)
 		{
-			springs[i]->update(dt);
+			(*it)->update(dt);
 		}		
 	}
 	
@@ -70,14 +70,14 @@ public:
 	{
         ofMesh mesh; 
         mesh.setMode(OF_PRIMITIVE_LINES);
-		for(int i = 0; i < springs.size(); i++)
+		for(vector<ofxSpring*>::iterator it = springs.begin(); it != springs.end(); ++it)
 		{
-            mesh.addColor(springs[i]->getColor());
-            mesh.addVertex(springs[i]->getPos(0));
-            mesh.addColor(springs[i]->getColor());
-            mesh.addVertex(springs[i]->getPos(1));
+            mesh.addColor((*it)->getColor());
+            mesh.addVertex((*it)->getPos(0));
+            mesh.addColor((*it)->getColor());
+            mesh.addVertex((*it)->getPos(1));
 		}
-        mesh.draw();
+        mesh.drawWireframe();            
 	}
 	
 	virtual void addSpring(ofxSpring *s)
@@ -105,12 +105,20 @@ public:
 	
 	void setRestDistance(float _restDist)
 	{
-		for(int i = 0; i < springs.size(); i++)
+		for(vector<ofxSpring*>::iterator it = springs.begin(); it != springs.end(); ++it)
 		{
-			springs[i]->setRestDistance(_restDist); 
+			(*it)->setRestDistance(_restDist); 
 		}
 	}
-    
+
+    void setK(float _k)
+	{
+		for(vector<ofxSpring*>::iterator it = springs.begin(); it != springs.end(); ++it)
+		{
+			(*it)->setK(_k);
+		}
+	}
+
     vector<ofxSpring*> &getSprings()
     {
         return springs; 

@@ -40,7 +40,7 @@ public:
     void update();
     void draw();
     void addBehavior(ofxBehavior *b);
-    void addParticle(ofxRParticle& p);
+    void addParticle(ofxRParticle* p);
     void setDt(float _dt);
     float *getDt();
     void setDamping(float _damping);
@@ -53,9 +53,9 @@ public:
     float *getAccelerationLimit();
     void setCount(int _count);
     float* getCount();
-    vector<ofxRParticle> &getParticles();
-    vector<ofxRParticle> *getParticlesPtr();
-    ofxRParticle& getParticle(int index);
+    vector<ofxRParticle *> &getParticles();
+    vector<ofxRParticle *> *getParticlesPtr();
+    ofxRParticle* getParticle(int index);
     void setRenderer(ofxRParticleRenderer *_renderer);
     ofxRParticleRenderer *getRenderer();
     void setSolver(ofxSolver *_solver);
@@ -64,8 +64,7 @@ public:
     void randomize(float magnitude);    
     
 protected:
-    vector<ofxRParticle>::iterator it;
-    vector<ofxRParticle> particles;
+    vector<ofxRParticle *> particles;
     vector<ofxBehavior *> behaviors;
     ofxRParticleRenderer *renderer;
     ofxSolver *solver;

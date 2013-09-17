@@ -43,17 +43,6 @@ public:
     
     void initBoid()
     {
-        damping = .01; 
-        zoneRadius = 50; zoneRadiusSqrd = zoneRadius*zoneRadius; zoneRadiusHalf = .5*zoneRadius;
-        accLimitLow = .50; 
-        velLimitLow = 1.0; 
-        threshLow = .40; 
-        threshHigh= .40; 
-        attractForceConstant = 0.04f; 
-        repelForceConstant = 0.01f; 
-        alignForceConstant = 0.01f;
-        cohesionForceConstant = 0.01f; 
-        perlinForceConstant = 0.01; 
         color.set(0,0, 255);
         flockCentroid.set(0); 
         neighborCentroid.set(0); 
@@ -64,35 +53,45 @@ public:
         left = ofVec3f(-offset*.5, -offset,0);
         right = ofVec3f(offset*.5, -offset,0);   
     }
-    
-    void setZoneRadius(float _zoneRadius)
-    {
-        zoneRadius = _zoneRadius;
-        zoneRadiusSqrd = zoneRadius*zoneRadius;         
-        zoneRadiusHalf = .5*zoneRadius;        
-    }
-    
+        
     void update(float dt = 1)
 	{
+        
+//        cout << "zoneRadius: " << *zoneRadius << endl;
+//        cout << "zoneRadiusHalf: " << *zoneRadiusHalf << endl;
+//        cout << "zoneRadiusSqrd: " << *zoneRadiusSqrd << endl;
+//        cout << "threshLow: " << *threshLow << endl;
+//        cout << "threshHigh: " << *threshHigh << endl;
+//        cout << "accLimitLow: " << *accLimitLow << endl;
+//        cout << "velLimitLow: " << *velLimitLow << endl;
+//        cout << "attractForceConstant: " << *attractForceConstant << endl;
+//        cout << "repelForceConstant: " << *repelForceConstant << endl;
+//        cout << "alignForceConstant: " << *alignForceConstant << endl;
+//        cout << "cohesionForceConstant: " << *cohesionForceConstant << endl;
+//        cout << "perlinForceConstant: " << *perlinForceConstant << endl;
+//        cout << "damping: " << *damping << endl;
+//        cout << "velLimit: " << *velLimit << endl;
+//        cout << "accLimit: " << *accLimit << endl; 
+        
 		if(!fixed)
 		{
-			ppos = pos; 
+			ppos = pos;
             for(int i = 0; i < externalForces.size(); i++)
             {
             	acc+=(*externalForces[i]); 
 			}
             separation();
             
-			acc.limit(accLimit); 
-			acc -=vel*damping; 
+			acc.limit((*accLimit)); 
+			acc -=vel*(*damping); 
 
 			vel+=acc; 
 			
-            vel.limit(velLimit); 		
-            if(vel.lengthSquared() < velLimitLow)
+            vel.limit((*velLimit)); 
+            if(vel.lengthSquared() < (*velLimitLow))
             {
                 vel.normalize(); 
-                vel*=velLimitLow;
+                vel*=(*velLimitLow); 
             }
         
 			pos += vel; 		
@@ -103,7 +102,7 @@ public:
     
     void separation()
     {
-        flockCentroid.set(0); 
+        flockCentroid.set(0);
         neighborCentroid.set(0); 
         numNeighbors = 0; 
         
@@ -115,37 +114,37 @@ public:
                 ofVec3f dir = p->getPos() - pos; 
                 float dis = dir.length();
                 
-                if(dis < zoneRadius)  
+                if(dis < (*zoneRadius))
                 {
                     if(dis < 1)
                     {
                         dis = 5;
                     }
-                    float percent = dis/zoneRadius;
+                    float percent = dis/(*zoneRadius);
                     addNeighborPos(p->getPos());
                     
-                    if(percent < threshLow)        //repel
+                    if(percent < (*threshLow))        //repel
                     {
-                        float F = ( threshLow/percent - 1.0f ) * repelForceConstant;
+                        float F = ( (*threshLow) / percent - 1.0f ) * (*repelForceConstant);
                         dir.normalize(); 
                         dir*=F;
                         acc -= dir;
                         p->getAcc() += dir;                    
                     }
-                    else if(percent < threshHigh)
+                    else if(percent < (*threshHigh))
                     {
-                        float threshDelta = threshHigh - threshLow;
-                        float adjustedPercent = ( percent - threshLow )/threshDelta;
-                        float F = ( 0.5f - cos( adjustedPercent * M_PI * 2.0f ) * 0.5f + 0.5f ) * alignForceConstant;
+                        float threshDelta = (*threshHigh) - (*threshLow); 
+                        float adjustedPercent = ( percent - (*threshLow) )/threshDelta;
+                        float F = ( 0.5f - cos( adjustedPercent * M_PI * 2.0f ) * 0.5f + 0.5f ) * (*alignForceConstant);
                                         
                         acc += ofVec3f(p->getVel()).normalize()*F;
                         p->getAcc() += ofVec3f(vel).normalize()*F;
                     }
                     else
                     {                    
-                        float threshDelta = 1.0f - threshHigh;
-                        float adjustedPercent = ( percent - threshHigh )/threshDelta;
-                        float F = ( 1.0 - ( cos( adjustedPercent * M_PI*2.0f ) * -0.5f + 0.5f ) ) * attractForceConstant;
+                        float threshDelta = 1.0f - (*threshHigh); 
+                        float adjustedPercent = ( percent - (*threshHigh) )/threshDelta;
+                        float F = ( 1.0 - ( cos( adjustedPercent * M_PI*2.0f ) * -0.5f + 0.5f ) ) * (*attractForceConstant); 
                         dir.normalize(); 
                         dir*= F;
                         acc += dir;
@@ -159,13 +158,13 @@ public:
          if(numNeighbors > 0 )
          { 
              ofVec3f neighborAveragePos = ( neighborCentroid/numNeighbors );
-             acc += ( neighborAveragePos - pos ) * cohesionForceConstant;	             
+             acc += ( neighborAveragePos - pos ) * (*cohesionForceConstant);
          }
         color.setHue(numNeighbors);
 
-		
-		ofVec3f perlin = ofVec3f(ofSignedNoise(pos.x*0.001, ofGetElapsedTimeMillis()*0.001), ofSignedNoise(pos.y*0.001, ofGetElapsedTimeMillis()*0.001),0);
-        acc+=perlin*(perlinForceConstant*accLimit);
+		float time = ofGetElapsedTimeMillis()*(*noiseScale);
+		ofVec3f perlin = ofVec3f(ofSignedNoise(pos.x*(*noiseScale), time), ofSignedNoise(pos.y*(*noiseScale), time),ofSignedNoise(pos.z*(*noiseScale), time));
+        acc+=perlin*((*perlinForceConstant)*(*accLimit));
     }
 	
 	virtual void draw()
@@ -180,13 +179,13 @@ public:
         ofNoFill();
         
         ofSetColor(0,255,0,50);
-        ofCircle(pos.x, pos.y, zoneRadiusHalf);
+        ofCircle(pos.x, pos.y, *zoneRadiusHalf);
         
         ofSetColor(0,0,255,50);
-        ofCircle(pos.x, pos.y, threshHigh*zoneRadiusHalf);        
+        ofCircle(pos.x, pos.y, (*threshHigh)*(*zoneRadiusHalf));
         
         ofSetColor(255,0,0,50);
-        ofCircle(pos.x, pos.y, threshLow*zoneRadiusHalf);
+        ofCircle(pos.x, pos.y, (*threshLow)*(*zoneRadiusHalf));
  
     }
 
@@ -214,29 +213,42 @@ public:
 //        {            
 //            pos.y = ofGetHeight()-radius*.5;
 //        }
-        float w = ofGetWidth();
-        float h = ofGetHeight();
+        float w = *bWidth;
+        float h = *bHeight;
+        float d = *bDepth;
+        
         if(pos.x > w)
         {
-            pos.x = w-1;
-            vel*=-1.0;
+            pos.x = 1;
+//            vel*=-1.0;
         }
-        else if(pos.x < 0)
+        else if(pos.x < -w)
         {   
-            pos.x = 1; 
-            vel*=-1.0;
+            pos.x = w-1;
+//            vel*=-1.0;
         }
         if(pos.y > h)
         {
-            pos.y = h-1;
-            vel*=-1.0;            
+            pos.y = -h+1;
+//            vel*=-1.0;
         }
-        else if(pos.y < 0)
+        else if(pos.y < -h)
         {
-            pos.y = 1; 
-            vel*=-1.0;            
-        }	        
-    }	    
+            pos.y = h-1;
+//            vel*=-1.0;
+        }
+        
+        if(pos.z > d)
+        {
+            pos.z = -d+1;
+        }
+        else if(pos.z < -d)
+        {
+            pos.z = d-1;
+        }
+
+        
+    }
     
     void addNeighborPos(ofVec3f _pos)
     {
@@ -247,12 +259,32 @@ public:
   	vector<ofxParticle*> *particles; 
     ofVec3f flockCentroid; 
     ofVec3f neighborCentroid; 
-    float numNeighbors; 
-    float zoneRadius, zoneRadiusHalf, zoneRadiusSqrd, threshLow, threshHigh;  
-  	float accLimitLow, velLimitLow, attractForceConstant, repelForceConstant, alignForceConstant, cohesionForceConstant, perlinForceConstant; 
     ofVec3f front;
     ofVec3f left;
-    ofVec3f right; 
+    ofVec3f right;
+
+    float numNeighbors;
+    
+    float *zoneRadius;
+    float *zoneRadiusHalf;
+    float *zoneRadiusSqrd;
+    float *threshLow;
+    float *threshHigh;
+  	float *accLimitLow;
+    float *velLimitLow;
+    float *centerForceConstant; 
+    float *attractForceConstant;
+    float *repelForceConstant;
+    float *alignForceConstant;
+    float *cohesionForceConstant;
+    float *perlinForceConstant;
+    float *noiseScale; 
+    float *damping;
+    float *velLimit;
+    float *accLimit;
+    float *bWidth;
+    float *bHeight;
+    float *bDepth;
 };
 
 #endif

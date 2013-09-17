@@ -92,7 +92,7 @@ public:
 	virtual void draw()
 	{
 		ofSetColor(color); 
-		ofSphere(pos.x,pos.y,pos.z, radius/10.0); 		
+		ofDrawSphere(pos.x,pos.y,pos.z, radius/10.0);
 	}
 	
 	virtual ofVec3f goSpherical()

@@ -39,8 +39,8 @@ public:
     ofxSolver(float *_dt = NULL);
     ~ofxSolver();
     virtual void init();
-    virtual Derivative evaluate(ofxRParticle& particle, ofVec3f *iPos, ofVec3f *iVel, float dt, Derivative &d);
-    virtual void update(ofxRParticle& particle);
+    virtual Derivative evaluate(ofxRParticle* particle, ofVec3f *iPos, ofVec3f *iVel, float dt, Derivative &d);
+    virtual void update(ofxRParticle* particle);
     float *getDt();
     void setDtPtr(float *_dt);
     void setDt(float _dt);

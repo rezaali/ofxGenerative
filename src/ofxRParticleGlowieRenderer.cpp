@@ -37,14 +37,14 @@ void ofxRParticleGlowieRenderer::draw()
     }
 
     ofSetRectMode(OF_RECTMODE_CENTER);
-    for(vector<ofxRParticle>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
+    for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
     {
         glPushMatrix();
-        ofVec3f pos = it->getPos();
+        ofVec3f pos = (*it)->getPos();
         glTranslatef(pos.x, pos.y, pos.z);
         billBoard(); 
-        ofSetColor(it->getColor());
-        float r = it->getRadius();
+        ofSetColor((*it)->getColor());
+        float r = (*it)->getRadius();
         glow->draw(0, 0, r, r);
         glPopMatrix();
     }

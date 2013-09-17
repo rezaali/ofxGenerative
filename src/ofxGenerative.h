@@ -1,6 +1,6 @@
 /********************************************************************************** 
  
- Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
+ Copyright (C) 2013 Syed Reza Ali (www.syedrezaali.com)
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of
  this software and associated documentation files (the "Software"), to deal in
@@ -59,8 +59,12 @@
 #include "ofxVerletSolver.h"
 #include "ofxRParticle.h"
 #include "ofxRParticleSystem.h"
+
+//Render
 #include "ofxRParticleRenderer.h"
 #include "ofxRParticleGlowieRenderer.h"
+
+//Behavior
 #include "ofxBehavior.h"
 #include "ofxSphericalAttractionBehavior.h"
 #include "ofxHomingBehavior.h"
@@ -70,5 +74,7 @@
 #include "ofxSwarmBehavior.h"
 #include "ofxElectroStaticBehavior.h"
 #include "ofxBufferEffectorBehavior.h"
+#include "ofxLorentzBehavior.h"
+#include "ofxVortexBehavior.h"
 
 #endif

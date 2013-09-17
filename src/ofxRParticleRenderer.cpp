@@ -38,22 +38,34 @@ void ofxRParticleRenderer::draw()
     }
     else
     {
-        ofEnableAlphaBlending();
+         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     }
-
-    glDisable(GL_DEPTH_TEST);
-    glEnableClientState( GL_VERTEX_ARRAY );
-    glEnableClientState( GL_COLOR_ARRAY );
-    glVertexPointer( 3, GL_FLOAT, sizeof(ofxRParticle), &(*particles)[0].pos);
-    glColorPointer( 4, GL_UNSIGNED_BYTE, sizeof(ofxRParticle),  &(*particles)[0].color );
+//
+//    glDisable(GL_DEPTH_TEST);
+//    glEnableClientState( GL_VERTEX_ARRAY );
+//    glEnableClientState( GL_COLOR_ARRAY );
+//    glVertexPointer( 3, GL_FLOAT, sizeof(ofxRParticle *), &(*particles)[0]->pos);
+//    glColorPointer( 4, GL_UNSIGNED_BYTE, sizeof(ofxRParticle *),  &(*particles)[0]->color );
     glPointSize(*pointSize);
-    glDrawArrays( GL_POINTS, 0, (*particles).size() );
+//    glDrawArrays( GL_POINTS, 0, (*particles).size() );
+//    
+//    glDisableClientState( GL_VERTEX_ARRAY );
+//    glDisableClientState( GL_COLOR_ARRAY );
     
-    glDisableClientState( GL_VERTEX_ARRAY );
-    glDisableClientState( GL_COLOR_ARRAY );
+    glBegin(GL_POINTS);
+    for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); ++it)
+    {
+        ofVec3f *pos = (*it)->getPosPtr();     
+        ofColor *clr = (*it)->getColorPtr();
+        ofSetColor(*clr);
+        glVertex3f(pos->x,pos->y,pos->z); 
+    }
+    glEnd();
+    
+        
 }
 
-void ofxRParticleRenderer::setParticlesPtr(vector<ofxRParticle> *_particles)
+void ofxRParticleRenderer::setParticlesPtr(vector<ofxRParticle *> *_particles)
 {
     particles = _particles;
 }
@@ -76,4 +88,9 @@ void ofxRParticleRenderer::setAdditiveBlending(bool _bAdditiveBlending)
 bool *ofxRParticleRenderer::getAdditiveBlendingPtr()
 {
     return &bAdditiveBlending; 
+}
+
+bool ofxRParticleRenderer::getAdditiveBlending()
+{
+    return bAdditiveBlending; 
 }

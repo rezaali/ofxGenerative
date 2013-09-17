@@ -35,22 +35,22 @@ void ofxSolver::init()
     setDt(1.0);
 }
 
-Derivative ofxSolver::evaluate(ofxRParticle& particle, ofVec3f *iPos, ofVec3f *iVel, float dt, Derivative &d)
+Derivative ofxSolver::evaluate(ofxRParticle* particle, ofVec3f *iPos, ofVec3f *iVel, float dt, Derivative &d)
 {
     ofVec3f p = *iPos + d.dpdt*dt;
     ofVec3f v = *iVel + d.dvdt*dt;
     
     Derivative output;
     output.dpdt = v;
-    output.dvdt = particle.calculateAcceleration(p, v, dt);
+    output.dvdt = particle->calculateAcceleration(p, v, dt);
     return output;
 }
 
-void ofxSolver::update(ofxRParticle& particle)
+void ofxSolver::update(ofxRParticle* particle)
 {
-    ofVec3f *ppos = particle.getPposPtr();
-    ofVec3f *pos = particle.getPosPtr();
-    ofVec3f *vel = particle.getVelPtr();
+    ofVec3f *ppos = particle->getPposPtr();
+    ofVec3f *pos = particle->getPosPtr();
+    ofVec3f *vel = particle->getVelPtr();
     
     ppos->set(*pos);
     
@@ -61,7 +61,7 @@ void ofxSolver::update(ofxRParticle& particle)
     
     *pos += (*dt/6.0) * (a.dpdt + 2.0f*(b.dpdt + c.dpdt) + d.dpdt);
     *vel += (*dt/6.0) * (a.dvdt + 2.0f*(b.dvdt + c.dvdt) + d.dvdt);
-    vel->limit(particle.getVelocityLimit());
+    vel->limit(particle->getVelocityLimit());
 //    (*vel)*=particle.getDamping();
 }
 

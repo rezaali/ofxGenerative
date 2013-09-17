@@ -85,6 +85,12 @@ ofVec3f& ofxRParticle::calculateAcceleration(ofVec3f &pos, ofVec3f &vel, float d
             b->actUpon(this, pos, vel, acc, dt);
         }
     }
+    
+    for(vector<ofVec3f *>::iterator it = springForces.begin(); it != springForces.end(); ++it)
+    {
+        acc+= *(*it)/(float)springForces.size();
+    }
+
     acc.limit(*accLimit);
     return acc;
 }

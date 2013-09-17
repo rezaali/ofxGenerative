@@ -50,6 +50,11 @@ bool ofxBehavior::isEnabled()
     return bEnabled;
 }
 
+void ofxBehavior::setEnabled(bool _bEnabled)
+{
+    bEnabled = _bEnabled; 
+}
+
 float* ofxBehavior::getMagnitudePtr()
 {
     return magnitude;

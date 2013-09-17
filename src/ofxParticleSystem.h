@@ -43,6 +43,7 @@ public:
 	
 	void clear()
 	{
+    	uniqueIDs = 0;         
         vector<ofxParticle *>::iterator it;    
         for ( it=particles.begin() ; it < particles.end(); it++ )
         {

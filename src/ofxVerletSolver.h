@@ -33,7 +33,7 @@ public:
     ofxVerletSolver(float *_dt = NULL);
     ~ofxVerletSolver();
     void init();
-    void update(ofxRParticle& particle);
+    void update(ofxRParticle* particle);
 protected:
 };
 

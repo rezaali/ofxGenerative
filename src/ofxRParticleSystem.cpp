@@ -24,9 +24,10 @@ ofxRParticleSystem::~ofxRParticleSystem()
     delete velLimit;
     delete solver;
     delete renderer;
-    for(vector<ofxBehavior *>::iterator bit = behaviors.begin(); bit != behaviors.end(); bit++)
+    for(vector<ofxBehavior *>::iterator bit = behaviors.begin(); bit != behaviors.end(); ++bit)
     {
-        delete (*bit);
+        ofxBehavior *b = *bit;
+        delete b;
     }
     behaviors.clear();
     clear();
@@ -34,7 +35,11 @@ ofxRParticleSystem::~ofxRParticleSystem()
 
 void ofxRParticleSystem::clear()
 {
-    particles.clear();
+    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); ++it)
+    {
+        delete *it;
+    }
+    particles.clear(); 
 }
 
 void ofxRParticleSystem::init()
@@ -69,7 +74,7 @@ void ofxRParticleSystem::update()
         (*bit)->update(); 
     }
     
-    for(it = particles.begin(); it != particles.end(); it++)
+    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
     {
         solver->update(*it);
     }
@@ -85,15 +90,15 @@ void ofxRParticleSystem::addBehavior(ofxBehavior *b)
     behaviors.push_back(b);
 }
 
-void ofxRParticleSystem::addParticle(ofxRParticle& p)
+void ofxRParticleSystem::addParticle(ofxRParticle* p)
 {
     uniqueIDs++;
-    p.setID(uniqueIDs);
-    p.setDampingPtr(damping);
-    p.setRestitutionPtr(restitution);
-    p.setAccerationLimitPtr(accLimit);
-    p.setVelocityLimitPtr(velLimit);
-    p.setBehaviorVectorPtr(&behaviors);
+    p->setID(uniqueIDs);
+    p->setDampingPtr(damping);
+    p->setRestitutionPtr(restitution);
+    p->setAccerationLimitPtr(accLimit);
+    p->setVelocityLimitPtr(velLimit);
+    p->setBehaviorVectorPtr(&behaviors);
     particles.push_back(p);
     setCount(uniqueIDs);
 }
@@ -158,17 +163,17 @@ float* ofxRParticleSystem::getCount()
     return count;
 }
 
-vector<ofxRParticle>& ofxRParticleSystem::getParticles()
+vector<ofxRParticle *>& ofxRParticleSystem::getParticles()
 {
     return particles;
 }
 
-vector<ofxRParticle>* ofxRParticleSystem::getParticlesPtr()
+vector<ofxRParticle *>* ofxRParticleSystem::getParticlesPtr()
 {
     return &particles; 
 }
 
-ofxRParticle& ofxRParticleSystem::getParticle(int index)
+ofxRParticle* ofxRParticleSystem::getParticle(int index)
 {
     if(index < particles.size() && index >= 0)
     {
@@ -187,7 +192,7 @@ void ofxRParticleSystem::setRenderer(ofxRParticleRenderer *_renderer)
         delete renderer;
     }
     renderer = _renderer;
-    renderer->setParticlesPtr(&particles);    
+    renderer->setParticlesPtr(&particles);
 }
 
 ofxRParticleRenderer* ofxRParticleSystem::getRenderer()
@@ -212,8 +217,8 @@ ofxSolver* ofxRParticleSystem::getSolver()
 
 void ofxRParticleSystem::randomize(float magnitude)
 {
-    for(it = particles.begin(); it != particles.end(); it++)
+    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
     {
-        it->setPpos(ofVec3f(ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude)));
+        (*it)->setPpos(ofVec3f(ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude)));
     }
 }

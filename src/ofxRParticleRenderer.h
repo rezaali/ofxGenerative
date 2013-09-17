@@ -35,15 +35,16 @@ public:
     void init();
     virtual void setup(); 
     virtual void draw();
-    void setParticlesPtr(vector<ofxRParticle> *_particles);
+    void setParticlesPtr(vector<ofxRParticle *> *_particles);
     void setPointSize(float _pointSize);
     float *getPointSizePtr();
     void setAdditiveBlending(bool _bAdditiveBlending);
     bool *getAdditiveBlendingPtr();
+    bool getAdditiveBlending();    
     
 protected:
     bool bAdditiveBlending;
-    vector<ofxRParticle> *particles;
+    vector<ofxRParticle *> *particles;
     float *pointSize;    
 };
 

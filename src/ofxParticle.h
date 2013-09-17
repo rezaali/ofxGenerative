@@ -206,6 +206,20 @@ public:
 	void setAccerationLimit(float _acclimit) { accLimit = _acclimit; }
 	void setVelocityLimit(float _vellimit) { velLimit = _vellimit; }
 	void addExternalForce(ofVec3f *_extforce) { externalForces.push_back(_extforce); }
+    void clearExternalForces() { externalForces.clear(); }
+//    void removeExternalForce(ofVec3f *_extforce)
+//    {
+//        int index = 0;
+//        for(vector<ofVec3f *>::iterator it = externalForces.begin(); it != externalForces.end(); ++it)
+//        {
+//            if((*it) == _extforce)
+//            {
+//                externalForces.erase(externalForces.begin()+index);
+//            }
+//            index++; 
+//        }
+//    }
+    
     void addSpringForce(ofVec3f *_extforce) { springForces.push_back(_extforce); }
 	void setFixed(bool _fixed) { fixed = _fixed; }
 	bool isFixed() { return fixed; } 

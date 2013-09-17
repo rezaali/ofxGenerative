@@ -143,6 +143,29 @@ public:
             return (*p2);             
         }
     }
+
+    ofVec3f * getPosPtr(int index)
+    {
+        if(index == 0)
+        {
+            return p1;
+        }
+        else
+        {
+            return p2;
+        }
+    }
+
+    void setPos1(ofVec3f *_p1)
+    {
+        p1 = _p1;
+    }
+    
+    void setPos2(ofVec3f *_p2)
+    {
+        p2 = _p2;
+    }
+    
     
 	int getID() { return sid; }
 	void setID(int _sid) { sid = _sid; } 

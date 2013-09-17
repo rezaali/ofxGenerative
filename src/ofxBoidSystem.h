@@ -35,38 +35,106 @@ public:
 	{
         initBoidSystem();
 	}
+    
+    ~ofxBoidSystem()
+    {
+        cout << "DELETTING BOID SYSTEM" << endl; 
+        delete drawDebug;
+        delete drawVelocities;
+        delete drawAccelerations;
+
+        delete zoneRadiusHalf;
+        delete zoneRadiusSqrd;
+        delete zoneRadius;
+        delete threshLow;
+        delete threshHigh;
+        delete centerForceConstant; 
+        delete attractForceConstant;
+        delete repelForceConstant;
+        delete alignForceConstant;
+        delete cohesionForceConstant;
+        delete perlinForceConstant;
+        delete noiseScale; 
+        delete velLimitLow;
+        delete accLimitLow; 
+        delete velLimit;
+        delete accLimit; 
+        delete damping;
+        
+        delete bWidth;
+        delete bHeight;
+        delete bDepth; 
+    }
+    
 
     void initBoidSystem()
     {
-        zoneRadius = 80.4487;
-        threshLow = 0.772436;
-        threshHigh = 0.836538;
-        attractForceConstant = 0.0184295;
-        repelForceConstant = 0.0198301;
-        alignForceConstant = 0.01099039;
-        cohesionForceConstant = 0.0112692;
-        perlinForceConstant = 0.05084295;
-        accLimit = 9.03846;
-        velLimit = 9.07051;
-        velLimitLow = 3.33333;
-        damping = 0.108683;
+        cout << "CREATING BOID SYSTEM" << endl;
         
-        drawDebug = false; 
-        drawVelocities = false; 
-        drawAccelerations = false;
+        drawDebug = new bool();
+        drawVelocities = new bool();
+        drawAccelerations = new bool();
+        
+        zoneRadius = new float();
+        zoneRadiusHalf = new float(); 
+        zoneRadiusSqrd = new float(); 
+
+        threshLow = new float();
+        threshHigh = new float();
+        centerForceConstant = new float(); 
+        attractForceConstant = new float();
+        repelForceConstant = new float();
+        alignForceConstant = new float();
+        cohesionForceConstant = new float();
+        perlinForceConstant = new float();
+        noiseScale = new float(); 
+        velLimitLow = new float();
+        accLimitLow = new float(); 
+        velLimit = new float();
+        accLimit = new float();
+        damping = new float(); 
+        
+        bWidth = new float();
+        bHeight = new float();
+        bDepth = new float();
+        
+        *zoneRadius = 80.4487;
+        *zoneRadiusHalf = (*zoneRadius)*.5;
+        *zoneRadiusSqrd = (*zoneRadius)*(*zoneRadius); 
+        
+        *threshLow = 0.772436;
+        *threshHigh = 0.836538;
+        *attractForceConstant = 0.0184295;
+        *repelForceConstant = 0.0198301;
+        *alignForceConstant = 0.01099039;
+        *cohesionForceConstant = 0.0112692;
+        *perlinForceConstant = 0.05084295;
+        *accLimit = 9.03846;
+        *velLimit = 9.07051;
+        *velLimitLow = 3.33333;
+        *accLimitLow = 0.0; 
+        *damping = 0.108683;
+        
+        *bWidth = 512.0;
+        *bHeight = 512.0;
+        *bDepth = 512.0;
+        
+        *drawDebug = false;
+        *drawVelocities = false;
+        *drawAccelerations = false;
     }
     
     void draw()
 	{
-        if(drawDebug)
+        if((*drawDebug) == true)
         {
             for(int i = 0; i < particles.size(); i++)
             {
                 ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-                bp->drawDebug(); 
+                bp->drawDebug();            
             }
         }
-        if(drawVelocities)
+        if((*drawVelocities) == true)
         {
             ofMesh mesh;
             mesh.setMode(OF_PRIMITIVE_LINES);
@@ -80,7 +148,7 @@ public:
             }            
             mesh.draw();
         }
-        if(drawAccelerations)
+        if((*drawAccelerations) == true)
         {
             ofMesh mesh;
             mesh.setMode(OF_PRIMITIVE_LINES);
@@ -153,187 +221,74 @@ public:
         return (float)(atan2(n2.y,n2.x) - atan2(n1.y,n1.x))*RAD_TO_DEG;
     }
 
-    void setZoneRadius(float _zoneRadius)
-    {
-        zoneRadius = _zoneRadius;
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->setZoneRadius(zoneRadius);
-		}
-    }
-    
-    void setThreshLow(float _threshLow)
-    {
-        threshLow = _threshLow; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->threshLow = threshLow; 
-		}
-    }
-
-    void setThreshHigh(float _threshHigh)
-    {
-        threshHigh = _threshHigh; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->threshHigh = threshHigh; 
-		}
-    }
-
-    void setAttractForceConstant(float _attractForceConstant)
-    {
-        attractForceConstant = _attractForceConstant;
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->attractForceConstant = attractForceConstant; 
-		}
-    }
-    
-    void setRepelForceConstant(float _repelForceConstant)
-    {
-        repelForceConstant = _repelForceConstant; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->repelForceConstant = repelForceConstant; 
-		}        
-    }
-    
-    void setCohesionForceConstant(float _cohesionForceConstant)
-    {
-        cohesionForceConstant = _cohesionForceConstant; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->cohesionForceConstant = cohesionForceConstant; 
-		}        
-    }
-    
-    
-    void setAlignForceConstant(float _alignForceConstant)
-    {
-        alignForceConstant = _alignForceConstant; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->alignForceConstant = alignForceConstant; 
-		}        
-    }
-
-    void setPerlinForceConstant(float _perlinForceConstant)
-    {
-        perlinForceConstant = _perlinForceConstant; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->perlinForceConstant = perlinForceConstant; 
-		}        
-    }
-
-    void setVelLimitLow(float _velLimitLow)
-	{
-        velLimitLow = _velLimitLow;
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->velLimitLow = velLimitLow; 
-		}        
-    }
-
-    void setVelLimitHigh(float _velLimit)
-	{
-        velLimit = _velLimit;
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->setVelocityLimit(velLimit);
-		}        
-    }
-    
-    void setVelLimitLowAndHigh(float _velLimitLow, float _velLimit)
-    {
-        velLimitLow = _velLimitLow;        
-        velLimit = _velLimit;        
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->velLimitLow = velLimitLow; 
-            bp->setVelocityLimit(velLimit);            
-		}        
-        
-    }
-    
-    void setAccLimitHigh(float _accLimit)
-    {
-        accLimit = _accLimit;
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->setAccerationLimit(accLimit);
-		}        
-    }
-    
-    void setDamping(float _damping)
-    {
-        damping = _damping; 
-        for(int i = 0; i < particles.size(); i++)
-		{
-			ofxBoidParticle *bp = (ofxBoidParticle *) particles[i];
-            bp->setDamping(damping);
-        }
-    }
-
     virtual void addParticle(ofxBoidParticle *p)
 	{
 		uniqueIDs++; 
 		p->setID(uniqueIDs); 
         p->threshLow = threshLow;        
         p->threshHigh = threshHigh;                
-        p->setZoneRadius(zoneRadius);
-        p->velLimitLow = velLimitLow; 
-        p->setVelocityLimit(velLimit);
-        p->setAccerationLimit(accLimit);
+        p->zoneRadius = zoneRadius;
+        p->zoneRadiusHalf = zoneRadiusHalf;
+        p->zoneRadiusSqrd = zoneRadiusSqrd; 
+        p->velLimitLow = velLimitLow;
+        p->velLimit = velLimit; 
+        p->accLimit = accLimit;
+        p->accLimitLow = accLimitLow;
+        p->centerForceConstant = centerForceConstant; 
         p->attractForceConstant = attractForceConstant; 
         p->repelForceConstant = repelForceConstant;
         p->alignForceConstant = alignForceConstant; 
         p->cohesionForceConstant = cohesionForceConstant; 
-        p->perlinForceConstant = perlinForceConstant; 
-        p->setDamping(damping);
+        p->perlinForceConstant = perlinForceConstant;
+        p->noiseScale = noiseScale; 
+        p->damping = damping;
+        p->bWidth = bWidth;
+        p->bHeight = bHeight;
+        p->bDepth = bDepth;
         particles.push_back(p);         
 	}
     
     void printSettings()
     {
-        cout <<         "zoneRadius = "             << zoneRadius << ";" << endl;
-        cout <<         "threshLow = "              << threshLow << ";" << endl; 
-        cout <<         "threshHigh = "             << threshHigh << ";" << endl;         
-        cout <<         "attractForceConstant = "   << attractForceConstant << ";" << endl;
-        cout <<         "repelForceConstant = "     << repelForceConstant << ";" << endl;
-        cout <<         "alignForceConstant = "     << alignForceConstant << ";" << endl;
-        cout <<         "cohesionForceConstant = "  << cohesionForceConstant << ";" << endl; 
-        cout <<         "perlinForceConstant = "    << perlinForceConstant << ";" << endl; 
-        cout <<         "accLimit = "               << accLimit << ";" << endl;
-        cout <<         "velLimit = "               << velLimit << ";" << endl;        
-        cout <<         "velLimitLow = "            << velLimitLow << ";" << endl;
-        cout <<         "damping = "                << damping << ";" << endl; 
+        cout <<         "zoneRadius = "             << *zoneRadius << ";" << endl;
+        cout <<         "threshLow = "              << *threshLow << ";" << endl;
+        cout <<         "threshHigh = "             << *threshHigh << ";" << endl;
+        cout <<         "attractForceConstant = "   << *attractForceConstant << ";" << endl;
+        cout <<         "repelForceConstant = "     << *repelForceConstant << ";" << endl;
+        cout <<         "alignForceConstant = "     << *alignForceConstant << ";" << endl;
+        cout <<         "cohesionForceConstant = "  << *cohesionForceConstant << ";" << endl;
+        cout <<         "perlinForceConstant = "    << *perlinForceConstant << ";" << endl;
+        cout <<         "accLimit = "               << *accLimit << ";" << endl;
+        cout <<         "velLimit = "               << *velLimit << ";" << endl;
+        cout <<         "velLimitLow = "            << *velLimitLow << ";" << endl;
+        cout <<         "damping = "                << *damping << ";" << endl; 
     }
     
-    bool drawDebug; 
-    bool drawVelocities; 
-    bool drawAccelerations; 
+    bool *drawDebug;
+    bool *drawVelocities;
+    bool *drawAccelerations;
 
-    float zoneRadius; 
-    float threshLow, threshHigh;
-    float attractForceConstant; 
-    float repelForceConstant;
-    float alignForceConstant;
-    float cohesionForceConstant; 
-    float perlinForceConstant; 
-    float velLimitLow, velLimit, accLimit, damping; 
+    float *zoneRadiusHalf;
+    float *zoneRadiusSqrd;
+    float *zoneRadius;
+    float *threshLow;
+    float *threshHigh;
+    float *centerForceConstant;
+    float *attractForceConstant;
+    float *repelForceConstant;
+    float *alignForceConstant;
+    float *cohesionForceConstant;
+    float *perlinForceConstant;
+    float *noiseScale;
+    float *velLimitLow;
+    float *accLimitLow;
+    float *velLimit;
+    float *accLimit; 
+    float *damping;
+    
+    float *bWidth;
+    float *bHeight;
+    float *bDepth;
 };
 
 
