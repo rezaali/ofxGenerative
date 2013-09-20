@@ -92,7 +92,9 @@ public:
 	virtual void draw()
 	{
 		ofSetColor(color); 
+		#if OF_VERSION_MINOR > 7
 		ofDrawSphere(pos.x,pos.y,pos.z, radius/10.0);
+		#endif
 	}
 	
 	virtual ofVec3f goSpherical()
