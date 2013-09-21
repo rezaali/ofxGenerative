@@ -306,8 +306,8 @@ void ofxField2D::adaptFromImage(ofPixels & pix, float amt){
 	
 	int numPix = pix.getWidth() * pix.getHeight();
 	unsigned char * srcPixels = pix.getPixels();
-	unsigned char brightness[numPix];
-	
+	//unsigned char brightness[numPix];
+	unsigned char* brightness = new unsigned char[numPix];
 	//printf("%i %i\n", size, numPix);
 	
 	for(int i=0; i<size; i++){
@@ -360,6 +360,7 @@ void ofxField2D::adaptFromImage(ofPixels & pix, float amt){
 	 float* dens;            //dens
 	 float* dens_prev;       //dens_prev
 	*/
+	delete brightness;
 }
 
 

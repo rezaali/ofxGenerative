@@ -265,7 +265,7 @@ public:
 					{
 						index = c<<1;
 						int xx = c % GRIDX;
-						int yy = floor(c / GRIDX);
+						int yy = floor(double(c) / GRIDX);
 						ofxHOCParticle *hocp = (ofxHOCParticle *) particles[c]; 
 						hocp->updateHomeData((xx-50) * 4.5f, (yy-45) * 6.0f, -(buffer[index]*1.5f)+50, buffer[index+1], 7.0f); 
 					}
