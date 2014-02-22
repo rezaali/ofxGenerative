@@ -82,7 +82,8 @@ public:
     float getLifeTime();
     bool isDead();
     void setBehaviorVectorPtr(vector<ofxBehavior *> *_behaviors);
-    void setParticleData(ofxRParticleData *_data);
+    void setData(ofxRParticleData *_data);
+    ofxRParticleData *getData(); 
     
     vector<ofxBehavior *> *behaviors;    //Pointer to Dynamic Behaviors
 	ofVec3f pos;

@@ -31,7 +31,7 @@ class ofxRParticleRenderer   //Renderers the particle(s)...
 {
 public:
     ofxRParticleRenderer();
-    ~ofxRParticleRenderer();
+    virtual ~ofxRParticleRenderer();
     void init();
     virtual void setup(); 
     virtual void draw();

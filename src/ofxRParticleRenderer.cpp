@@ -10,14 +10,14 @@
 
 ofxRParticleRenderer::ofxRParticleRenderer()
 {
-    init();    
+    init();
 }
 
 void ofxRParticleRenderer::init()
 {
     pointSize = new float;
     setPointSize(1.0);
-    bAdditiveBlending = false; 
+    bAdditiveBlending = false;
 }
 
 void ofxRParticleRenderer::setup()

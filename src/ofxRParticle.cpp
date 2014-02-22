@@ -340,7 +340,12 @@ void ofxRParticle::setBehaviorVectorPtr(vector<ofxBehavior *> *_behaviors)
     behaviors = _behaviors;
 }
 
-void ofxRParticle::setParticleData(ofxRParticleData *_data)
+void ofxRParticle::setData(ofxRParticleData *_data)
 {
     data = _data;
+}
+
+ofxRParticleData *ofxRParticle::getData()
+{
+    return data; 
 }
