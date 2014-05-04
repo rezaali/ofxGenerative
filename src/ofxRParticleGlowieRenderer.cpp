@@ -1,17 +1,10 @@
-//
-//  ofxRParticleGlowieRender.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/20/13.
-//
-//
-
 #include "ofxRParticleGlowieRenderer.h"
 #include "ofxRParticle.h"
 
-ofxRParticleGlowieRenderer::ofxRParticleGlowieRenderer()
+ofxRParticleGlowieRenderer::ofxRParticleGlowieRenderer() : ofxRParticleRenderer()
 {
-    setup(); 
+    setup();
+    setAdditiveBlending(true); 
 }
 
 ofxRParticleGlowieRenderer::~ofxRParticleGlowieRenderer()
@@ -26,16 +19,7 @@ void ofxRParticleGlowieRenderer::setup()
 
 void ofxRParticleGlowieRenderer::draw()
 {
-    if(bAdditiveBlending)
-    {
-        ofEnableBlendMode(OF_BLENDMODE_ADD);
-        glDisable(GL_DEPTH_TEST);
-    }
-    else
-    {
-        ofEnableAlphaBlending();
-    }
-
+    activateBlending();
     ofSetRectMode(OF_RECTMODE_CENTER);
     for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
     {

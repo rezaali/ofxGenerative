@@ -1,11 +1,3 @@
-//
-//  ofxLorentzBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 6/9/13.
-//
-//
-
 #include "ofxLorentzBehavior.h"
 #include "ofxRParticle.h" 
 
@@ -16,7 +8,30 @@ ofxLorentzBehavior::ofxLorentzBehavior() : ofxBehavior()
 
 ofxLorentzBehavior::~ofxLorentzBehavior()
 {
+    if(bAllocatedCurrent)
+    {
+        delete current;
+    }
     
+    if(bAllocatedStartPt)
+    {
+        delete startPt;
+    }
+    
+    if(bAllocatedEndPt)
+    {
+        delete endPt;
+    }
+    
+    if(bAllocatedTheta)
+    {
+        delete theta;
+    }
+    
+    if(bAllocatedSpeed)
+    {
+        delete speed;
+    }
 }
 
 void ofxLorentzBehavior::setup()

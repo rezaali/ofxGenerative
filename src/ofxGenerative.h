@@ -22,51 +22,60 @@
  
  **********************************************************************************/
 
-#ifndef OFX_GENERATIVE
-#define OFX_GENERATIVE
+#pragma once
 
-#include "ofxCircle.h"
-#include "ofxSuperShape.h"
-
-#include "ofxSpring.h"
+//Legacy
 #include "ofxParticle.h"
-#include "ofxTrailParticle.h"
 #include "ofxParticleSystem.h"
-#include "ofxSpringSystem.h"
-
 #include "ofxBoidParticle.h"
 #include "ofxBoidSystem.h"
-
-#include "ofxSmartParticle.h"
-#include "ofxSmartParticleSystem.h"
-
-#include "ofxRezaParticle.h"
-#include "ofxRezaParticleSystem.h"
-
-#include "ofx1DExtruder.h"
-
-#ifndef TARGET_OPENGLES
-
+#include "ofxCircle.h"
+#include "ofxGenericShape.h"
 #include "ofxHOCParticle.h"
 #include "ofxHOCParticleSystem.h"
+#include "ofxRezaParticle.h"
+#include "ofxRezaParticleSystem.h"
+#include "ofxSmartParticle.h"
+#include "ofxSmartParticleSystem.h"
+#include "ofxSuperShape.h"
+#include "ofxTrailParticle.h"
 
-#endif
+//Helpers
+#include "ofx1DExtruder.h"
 
+//Fields
 #include "ofxField2D.h"
 #include "ofxFieldAgitator.h"
 
+//Solvers
 #include "ofxSolver.h"
 #include "ofxVerletSolver.h"
-#include "ofxRParticle.h"
-#include "ofxRParticleSystem.h"
 
-//Render
+//Particles
+#include "ofxRParticle.h"
+
+//Springs
+#include "ofxSpring.h"
+
+//Data
+#include "ofxRParticleData.h"
+#include "ofxNeighborParticleData.h" 
+#include "ofxMeshParticleData.h"
+
+//Systems
+#include "ofxRParticleSystem.h"
+#include "ofxSpringSystem.h"
+
+//Renderers
 #include "ofxRParticleRenderer.h"
 #include "ofxRParticleGlowieRenderer.h"
+#include "ofxRParticlePlexusRenderer.h"
+#include "ofxRParticlePathRenderer.h"
 
-//Behavior
+//Behaviors
 #include "ofxBehavior.h"
 #include "ofxSphericalAttractionBehavior.h"
+#include "ofxRingAttractionBehavior.h"
 #include "ofxHomingBehavior.h"
 #include "ofxDamperBehavior.h"
 #include "ofxDistorterBehavior.h"
@@ -76,5 +85,7 @@
 #include "ofxBufferEffectorBehavior.h"
 #include "ofxLorentzBehavior.h"
 #include "ofxVortexBehavior.h"
-
-#endif
+#include "ofxFieldEffectorBehavior.h"
+#include "ofxFieldEffectBehavior.h"
+#include "ofxBoundaryBehavior.h"
+#include "ofxElectroStaticNeighborBehavior.h"

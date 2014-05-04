@@ -1,11 +1,3 @@
-//
-//  ofxRParticle.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxRParticle.h"
 
 ofxRParticle::ofxRParticle()
@@ -47,6 +39,7 @@ ofxRParticle::~ofxRParticle()
 
 void ofxRParticle::init()
 {
+    orientation = ofQuaternion(0.0, ofVec3f(0, 0, 1));
     pos = ofVec3f(0,0,0);           //Current Position
     ppos = ofVec3f(0,0,0);          //Previous Position
     home = ofVec3f(0,0,0);          //Original Home Position
@@ -58,7 +51,9 @@ void ofxRParticle::init()
     data = NULL;
     
     damping = new float;
+    *damping = 0.9;
     restitution = new float;
+    *restitution = 0.9;    
     accLimit = new float;
     velLimit = new float;
     
@@ -215,6 +210,11 @@ float& ofxRParticle::getVelocityLimit()
     return *velLimit;
 }
 
+void ofxRParticle::clearExternalForces()
+{
+    externalForces.clear();
+}
+
 void ofxRParticle::addExternalForce(ofVec3f *_extforce)
 {
     externalForces.push_back(_extforce);
@@ -335,6 +335,11 @@ bool ofxRParticle::isDead()
     return dead;
 }
 
+void ofxRParticle::setDead(bool _dead)
+{
+    dead = _dead;
+}
+
 void ofxRParticle::setBehaviorVectorPtr(vector<ofxBehavior *> *_behaviors)
 {
     behaviors = _behaviors;
@@ -348,4 +353,19 @@ void ofxRParticle::setData(ofxRParticleData *_data)
 ofxRParticleData *ofxRParticle::getData()
 {
     return data; 
+}
+
+ofQuaternion &ofxRParticle::getOrientation()
+{
+    return orientation;
+}
+
+void ofxRParticle::setOrientation(ofQuaternion _orientation)
+{
+    orientation = _orientation;
+}
+
+ofQuaternion *ofxRParticle::getOrientationPtr()
+{
+    return &orientation;
 }

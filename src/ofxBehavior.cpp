@@ -1,11 +1,3 @@
-//
-//  ofxBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxBehavior.h"
 #include "ofxRParticle.h"
 
@@ -20,11 +12,18 @@ ofxBehavior::~ofxBehavior()
     {
         delete magnitude;
     }
+    if(bAllocatedEnabled)
+    {
+        delete bEnabled;
+    }
 }
 
 void ofxBehavior::init()
 {
-    bEnabled = true;
+    bAllocatedEnabled = true;
+    bEnabled = new bool;
+    setEnabled(true);
+    
     bAllocatedMagnitude = true;
     magnitude = new float;
     setMagnitude(1.0);
@@ -40,19 +39,34 @@ void ofxBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, of
  
 }
 
-bool* ofxBehavior::getEnabledPtr()
-{
-    return &bEnabled;
-}
-
-bool ofxBehavior::isEnabled()
+bool *ofxBehavior::getEnabledPtr()
 {
     return bEnabled;
 }
 
+void ofxBehavior::setEnabledPtr(bool *_bEnabled)
+{
+    if(bAllocatedEnabled)
+    {
+        delete bEnabled;
+        bAllocatedEnabled = false;
+    }
+    bEnabled = _bEnabled;
+}
+
+bool ofxBehavior::getEnabled()
+{
+    return *bEnabled;
+}
+
 void ofxBehavior::setEnabled(bool _bEnabled)
 {
-    bEnabled = _bEnabled; 
+    *bEnabled = _bEnabled;
+}
+
+bool ofxBehavior::isEnabled()
+{
+    return *bEnabled;
 }
 
 float* ofxBehavior::getMagnitudePtr()

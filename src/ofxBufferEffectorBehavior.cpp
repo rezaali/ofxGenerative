@@ -1,11 +1,3 @@
-//
-//  ofxBufferEffectorBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/25/13.
-//
-//
-
 #include "ofxBufferEffectorBehavior.h"
 #include "ofxRParticle.h"
 

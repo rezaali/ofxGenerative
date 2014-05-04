@@ -1,29 +1,4 @@
-/********************************************************************************** 
- 
- Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy of
- this software and associated documentation files (the "Software"), to deal in
- the Software without restriction, including without limitation the rights to
- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- of the Software, and to permit persons to whom the Software is furnished to do
- so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
- 
- **********************************************************************************/
-
-#ifndef OFX_1DEXTRUDER
-#define OFX_1DEXTRUDER
+#pragma once
 
 #include "ofMain.h"
 
@@ -45,8 +20,9 @@ public:
 		home = 0; 
 		pos = 0; 
 		vel = 0; 
-		acc = 0;  
-		damping = .75; 
+		acc = 0;
+        delta = fabs(pos-home);
+		damping = .75;
 		extForce = 0; 
 		extForceInQue = false; 
 		accLimit = .050; 
@@ -57,9 +33,9 @@ public:
     {
         init(); 
         home = _pos; 
-        pos = _pos; 
+        pos = _pos;
+        delta = fabs(pos-home);
     }
-	
 	
 	void setPhysics(float _damping, float _accLimit, float _velLimit)
 	{
@@ -136,6 +112,7 @@ public:
 	float goHome()
 	{
 		float temp = pos-home;
+        delta = fabs(temp);
 		temp*=.15;  
 		float tempvel = vel; 
 		tempvel *= .17;
@@ -190,7 +167,8 @@ public:
     void setPosAndHome(float _home)
     {
         home = _home; 
-        pos = _home; 
+        pos = _home;
+        delta = fabs(pos-home);
     }
 	
 	void addForce(float _extForce)
@@ -199,7 +177,13 @@ public:
 		extForce += _extForce; 
 	}
 	
+    float getDelta()
+    {
+        return delta;
+    }
+    
 protected:
+    float delta;
 	float home; 
 	float pos; 
 	float vel; 
@@ -210,6 +194,3 @@ protected:
 	float accLimit; 
 	bool extForceInQue; 
 }; 
-
-
-#endif

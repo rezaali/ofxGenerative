@@ -1,11 +1,3 @@
-//
-//  ofxDamperBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxSwarmBehavior.h"
 
 ofxSwarmBehavior::ofxSwarmBehavior() : ofxBehavior()

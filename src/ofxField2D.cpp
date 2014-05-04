@@ -1,29 +1,4 @@
-/**********************************************************************************
- 
- Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy of
- this software and associated documentation files (the "Software"), to deal in
- the Software without restriction, including without limitation the rights to
- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- of the Software, and to permit persons to whom the Software is furnished to do
- so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
- 
- **********************************************************************************/
-
 #include <iostream>
-
 #include "ofxField2D.h"
 
 using namespace std; 
@@ -85,9 +60,14 @@ void ofxField2D::init(int xRes, int yRes, int width, int height)
     dens = new float[size];
     dens_prev = new float[size];     
     reset(); 
-    randomize(); 
+    randomize();
+    color = ofColor(255,255, 255);
 }
 
+void ofxField2D::setColor(ofColor _color)
+{
+    color = _color; 
+}
 
 void ofxField2D::resize(int w, int h)
 {
@@ -156,8 +136,8 @@ void ofxField2D::update()
 
 void ofxField2D::input(float x, float y, float px, float py, float intensity)
 {
-    int i = (int)ofMap(x,0,ofGetWidth(),1,dimX, true);
-    int j = (int)ofMap(y,0,ofGetHeight(),1,dimY, true);
+    int i = (int)ofMap(x,0,w,0,dimX, true);
+    int j = (int)ofMap(y,0,h,0,dimY, true);
     u[IX(i,j)] = (25.0*(x-px))*intensity; 
     v[IX(i,j)] = (25.0*(y-py))*intensity;
     dens[IX(i,j)] = 15.0 * intensity; 
@@ -568,40 +548,44 @@ void ofxField2D::draw()
             drawDensity(); 
             break;  
             
-        case 1: 
+        case 1:
+            drawField();
+            break;
+            
+        case 2:
             drawFieldGrid(); 
             break;  
             
-        case 2: 
+        case 3:
             drawFieldGridWire(); 
             break;  
             
-        case 3: 
+        case 4:
             drawFieldMesh(); 
             break;  
             
-        case 4: 
+        case 5:
             drawFieldVectorMesh(); 
             break;  
             
-        case 5: 
+        case 6:
             drawFieldLinesVertical(); 
             break;  
             
-        case 6: 
+        case 7:
             drawFieldVelocityVertical();
             break; 
             
-        case 7: 
+        case 8:
             drawFieldLinesHorizontal();
             break;  
             
-        case 8: 
+        case 9:
             drawFieldVelocityHorizontal();
-            break;  
+            break;
 			
         default:     
-			renderType%=9;
+			renderType%=10;
             break;          
     }
 }
@@ -609,6 +593,11 @@ void ofxField2D::draw()
 int ofxField2D::getRenderType()
 {
     return renderType;
+}
+
+int *ofxField2D::getRenderTypePtr()
+{
+    return &renderType;
 }
 
 void ofxField2D::setRenderType(int _renderType)
@@ -625,7 +614,7 @@ void ofxField2D::drawField()
     {
         for(int j = 0; j <=dimY; j++)
         {
-            glColor4f(1,1,1,dens[IX(i,j)]);
+            glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
             glVertex2f(i*xInterval,j*yInterval);
             glVertex2f(i*xInterval+u[IX(i,j)],j*yInterval+v[IX(i,j)]);
         }
@@ -644,7 +633,7 @@ void ofxField2D::drawDensity()
     {
         for(int j = 0; j <=dimY; j++)
         {
-            glColor4f(1,1,1,dens[IX(i,j)]/10.0);
+            glColor4f(color.r,color.g,color.b,dens[IX(i,j)]/10.0);
             glVertex2f(i*xInterval,j*yInterval);
         }
     }
@@ -663,7 +652,7 @@ void ofxField2D::drawFieldGrid()
 		glBegin(GL_TRIANGLE_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,10.0*dens[IX(i,j)]);
 			glVertex3f((i+1)*xInterval,j*yInterval,10.0*dens[IX(i,j)]);                
 		}
@@ -683,7 +672,7 @@ void ofxField2D::drawFieldGridWire()
 		glBegin(GL_QUAD_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,10.0*dens[IX(i,j)]);
 			glVertex3f((i+1)*xInterval,j*yInterval,10.0*dens[IX(i,j)]);                
 		}
@@ -703,9 +692,9 @@ void ofxField2D::drawFieldMesh()
 		glBegin(GL_TRIANGLE_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,10.0*dens[IX(i,j)]);
-			glColor4f(1.0,1.0,1.0,dens[IX(i+1,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i+1,j)]);
 			glVertex3f((i+1)*xInterval,j*yInterval,10.0*dens[IX(i+1,j)]);                
 		}
 		glEnd();  
@@ -724,9 +713,9 @@ void ofxField2D::drawFieldVectorMesh()
 		glBegin(GL_QUAD_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,u[IX(i,j)]+v[IX(i,j)]);
-			glColor4f(1.0,1.0,1.0,dens[IX(i+1,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i+1,j)]);
 			glVertex3f((i+1)*xInterval,j*yInterval,u[IX(i+1,j)]+v[IX(i+1,j)]);                
 		}
 		glEnd();  
@@ -745,7 +734,7 @@ void ofxField2D::drawFieldLinesVertical()
 		glBegin(GL_LINE_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,dens[IX(i,j)]);
 		}
 		glEnd();  
@@ -764,7 +753,7 @@ void ofxField2D::drawFieldVelocityVertical()
 		glBegin(GL_LINE_STRIP);
 		for(int j = 0; j <=dimY; j++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,u[IX(i,j)]+v[IX(i,j)]);        
 		}
 		glEnd();  
@@ -782,7 +771,7 @@ void ofxField2D::drawFieldLinesHorizontal()
 		glBegin(GL_LINE_STRIP);
 		for(int i = 0; i <=dimX; i++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,dens[IX(i,j)]);
 			//        glVertex3f(i*xInterval,j*yInterval,u[IX(i,j)]+v[IX(i,j)]);        
 		}
@@ -801,7 +790,7 @@ void ofxField2D::drawFieldVelocityHorizontal()
 		glBegin(GL_LINE_STRIP);
 		for(int i = 0; i <=dimX; i++)
 		{
-			glColor4f(1.0,1.0,1.0,dens[IX(i,j)]);
+			glColor4f(color.r,color.g,color.b,dens[IX(i,j)]);
 			glVertex3f(i*xInterval,j*yInterval,u[IX(i,j)]+v[IX(i,j)]);        
 		}
 		glEnd();  

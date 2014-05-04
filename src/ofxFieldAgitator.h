@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "ofPoint.h"
@@ -64,6 +63,5 @@ public:
 	float distance;
 	
 	float angleRate;
-	float distanceRate;
-	
+	float distanceRate;	
 };

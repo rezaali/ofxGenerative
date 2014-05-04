@@ -1,29 +1,4 @@
-/**********************************************************************************
- 
- Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy of
- this software and associated documentation files (the "Software"), to deal in
- the Software without restriction, including without limitation the rights to
- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- of the Software, and to permit persons to whom the Software is furnished to do
- so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
- 
- **********************************************************************************/
-
-#ifndef OFXRPARTICLERENDERER
-#define OFXRPARTICLERENDERER
+#pragma once
 
 #include "ofxRParticle.h"
 
@@ -36,16 +11,33 @@ public:
     virtual void setup(); 
     virtual void draw();
     void setParticlesPtr(vector<ofxRParticle *> *_particles);
+  
+    virtual void activateBlending();
     void setPointSize(float _pointSize);
+    void setPointSizePtr(float *_pointSize);
     float *getPointSizePtr();
+    float getPointSize();
+    
     void setAdditiveBlending(bool _bAdditiveBlending);
+    void setAdditiveBlendingPtr(bool *_bAdditiveBlending);
     bool *getAdditiveBlendingPtr();
-    bool getAdditiveBlending();    
+    bool getAdditiveBlending();
+    
+    void setDepthTesting(bool _bDepthTesting);
+    void setDepthTestingPtr(bool *_bDepthTesting);
+    bool *getDepthTestingPtr();
+    bool getDepthTesting();
+
     
 protected:
-    bool bAdditiveBlending;
     vector<ofxRParticle *> *particles;
-    float *pointSize;    
-};
+    
+    bool bAllocatedAdditiveBlending;
+    bool *bAdditiveBlending;
 
-#endif
+    bool bAllocatedDepthTesting;
+    bool *bDepthTesting;
+
+    bool bAllocatedPointSize;
+    float *pointSize;
+};

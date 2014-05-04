@@ -1,11 +1,3 @@
-//
-//  ofxElectrostaticBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxElectroStaticBehavior.h"
 #include "ofxRParticle.h"
 
@@ -34,7 +26,7 @@ void ofxElectroStaticBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofV
             ofVec3f direction = (*it)->getPpos() - pos;
             float distance = direction.length(); 
             direction /= distance*distance;
-            r+=direction;
+            r+=direction*particle->getRadius();
         }
     }
     r /= ((float)particles->size());

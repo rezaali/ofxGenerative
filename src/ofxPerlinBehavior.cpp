@@ -1,11 +1,3 @@
-//
-//  ofxDamperBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxPerlinBehavior.h"
 #include "ofxRParticle.h"
 
@@ -32,9 +24,20 @@ void ofxPerlinBehavior::setup()
 
 void ofxPerlinBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
 {
-    float nx = ofSignedNoise((pos.z + pos.x) * (*noiseScale), ofGetElapsedTimef()*.1, particle->getID()*0.001);
-    float ny = ofSignedNoise((pos.x + pos.y) * (*noiseScale), ofGetElapsedTimef()*.1, particle->getID()*0.001);
-    float nz = ofSignedNoise((pos.y + pos.z) * (*noiseScale), ofGetElapsedTimef()*.1, particle->getID()*0.001);
+    float nx = ofSignedNoise((pos.z + pos.x) * (*noiseScale),
+                             ofGetElapsedTimef(),
+                             particle->getID()*0.1
+                             );
+    
+    float ny = ofSignedNoise(ofGetElapsedTimef(),
+                             particle->getID()*0.1,
+                             (pos.x + pos.y) * (*noiseScale)
+                             );
+    
+    float nz = ofSignedNoise(particle->getID()*0.1,
+                             (pos.y + pos.z) * (*noiseScale),
+                             ofGetElapsedTimef()
+                             );
     
     acc+=ofVec3f(nx, ny, nz)*(*magnitude)*dt;
 }

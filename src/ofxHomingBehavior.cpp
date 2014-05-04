@@ -1,11 +1,3 @@
-//
-//  ofxHomingBehavior.cpp
-//  Rezanator
-//
-//  Created by Syed Reza Ali on 4/17/13.
-//
-//
-
 #include "ofxHomingBehavior.h"
 #include "ofxRParticle.h"
 
