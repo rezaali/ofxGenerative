@@ -8,8 +8,8 @@ public:
     ofxRParticlePathRenderer();
     ~ofxRParticlePathRenderer();
     
-    void setup();
-    void draw();
+    virtual void setup();
+    virtual void draw();
     
     void setLineWidth(float _lineWidth);
     float* getLineWidthPtr();

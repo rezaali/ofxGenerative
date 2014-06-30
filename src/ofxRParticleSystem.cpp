@@ -45,10 +45,11 @@ ofxRParticleSystem::~ofxRParticleSystem()
         delete renderer;
     }
     
-    for(vector<ofxBehavior *>::iterator bit = behaviors.begin(); bit != behaviors.end(); ++bit)
+    vector<ofxBehavior *>::iterator bit = behaviors.begin();
+    vector<ofxBehavior *>::iterator ebit = behaviors.end();
+    for(; bit != ebit; ++bit)
     {
-        ofxBehavior *b = *bit;
-        delete b;
+        delete (*bit);
     }
     behaviors.clear();
     
@@ -57,9 +58,11 @@ ofxRParticleSystem::~ofxRParticleSystem()
 
 void ofxRParticleSystem::clear()
 {
-    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); ++it)
+    vector<ofxRParticle *>::iterator it = particles.begin();
+    vector<ofxRParticle *>::iterator eit = particles.end();
+    for(; it != eit; ++it)
     {
-        delete *it;
+        delete (*it);
     }
     particles.clear();
     uniqueIDs = 0;
@@ -104,12 +107,16 @@ void ofxRParticleSystem::init()
 
 void ofxRParticleSystem::update()
 {
-    for(vector<ofxBehavior *>::iterator bit = behaviors.begin(); bit != behaviors.end(); bit++)
+    vector<ofxBehavior *>::iterator bit = behaviors.begin();
+    vector<ofxBehavior *>::iterator ebit = behaviors.end();
+    for(; bit != ebit; ++bit)
     {
-        (*bit)->update(); 
+        (*bit)->update();
     }
-    int id = 1;
-    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
+    int id = 0;
+    vector<ofxRParticle *>::iterator it = particles.begin();
+    vector<ofxRParticle *>::iterator eit = particles.end();
+    for(; it != eit; ++it)
     {
         if((*it)->isDead())
         {
@@ -304,7 +311,9 @@ int ofxRParticleSystem::getCount()
 
 ofxRParticle * ofxRParticleSystem::removeParticle(ofxRParticle *particle)
 {
-    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
+    vector<ofxRParticle *>::iterator it = particles.begin();
+    vector<ofxRParticle *>::iterator eit = particles.end();
+    for(; it != eit; ++it)
     {
         ofxRParticle *p = (*it);
         if(p == particle)
@@ -375,7 +384,9 @@ ofxSolver* ofxRParticleSystem::getSolver()
 
 void ofxRParticleSystem::randomize(float magnitude)
 {
-    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
+    vector<ofxRParticle *>::iterator it = particles.begin();
+    vector<ofxRParticle *>::iterator eit = particles.end();
+    for(; it != eit; ++it)
     {
         ofVec3f pos = (*it)->getPos();
         (*it)->setPpos(pos + ofVec3f(ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude)));
@@ -384,7 +395,9 @@ void ofxRParticleSystem::randomize(float magnitude)
 
 void ofxRParticleSystem::randomize2D(float magnitude)
 {
-    for(vector<ofxRParticle *>::iterator it = particles.begin(); it != particles.end(); it++)
+    vector<ofxRParticle *>::iterator it = particles.begin();
+    vector<ofxRParticle *>::iterator eit = particles.end();
+    for(; it != eit; ++it)
     {
         ofVec3f pos = (*it)->getPos();
         (*it)->setPpos(pos + ofVec3f(ofRandom(-magnitude, magnitude), ofRandom(-magnitude, magnitude), 0));

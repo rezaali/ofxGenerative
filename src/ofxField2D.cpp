@@ -608,7 +608,6 @@ void ofxField2D::setRenderType(int _renderType)
 
 void ofxField2D::drawField()
 {
-    ofPushStyle();
     ofSetLineWidth(lineWidth);
     glBegin(GL_LINES);
     for(int i = 0; i <=dimX; i++)
@@ -620,14 +619,11 @@ void ofxField2D::drawField()
             glVertex2f(i*xInterval+u[IX(i,j)],j*yInterval+v[IX(i,j)]);
         }
     }
-    glEnd();    
-    ofPopStyle(); 
+    glEnd();
 }
 
 void ofxField2D::drawDensity()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 
     glPointSize(pointSize);
     glBegin(GL_POINTS);
     for(int i = 0; i <=dimX; i++)
@@ -639,15 +635,12 @@ void ofxField2D::drawDensity()
         }
     }
     glEnd();
-    ofPopStyle(); 
 }
 
 
 void ofxField2D::drawFieldGrid()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 	
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);       
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	for(int i = 0; i <=dimX; i++)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
@@ -659,14 +652,11 @@ void ofxField2D::drawFieldGrid()
 		}
 		glEnd();  
 	}
-	ofPopStyle(); 	
 }
 
 
 void ofxField2D::drawFieldGridWire()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	for(int i = 0; i <=dimX; i++)
 	{
@@ -679,14 +669,11 @@ void ofxField2D::drawFieldGridWire()
 		}
 		glEnd();  
 	}
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  	
-	ofPopStyle(); 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void ofxField2D::drawFieldMesh()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	for(int i = 0; i <=dimX; i++)
 	{
@@ -700,14 +687,11 @@ void ofxField2D::drawFieldMesh()
 		}
 		glEnd();  
 	}	
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  	
-	ofPopStyle(); 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void ofxField2D::drawFieldVectorMesh()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 		
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	for(int i = 0; i <=dimX; i++)
 	{
@@ -721,14 +705,11 @@ void ofxField2D::drawFieldVectorMesh()
 		}
 		glEnd();  
 	}
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  	
-	ofPopStyle(); 	
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void ofxField2D::drawFieldLinesVertical()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 		
 	ofSetLineWidth(lineWidth);
 	for(int i = 0; i <=dimX; i++)
 	{
@@ -740,15 +721,11 @@ void ofxField2D::drawFieldLinesVertical()
 		}
 		glEnd();  
 	}
-	ofPopStyle(); 		
 }
 
 void ofxField2D::drawFieldVelocityVertical()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 	
-	
-	ofSetLineWidth(5);
+	ofSetLineWidth(lineWidth);
 	for(int i = 0; i <=dimX; i++)
 	{
 		glBegin(GL_LINE_STRIP);
@@ -759,14 +736,11 @@ void ofxField2D::drawFieldVelocityVertical()
 		}
 		glEnd();  
 	}
-	ofPopStyle(); 		
 }
 
 void ofxField2D::drawFieldLinesHorizontal()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 		
-	ofSetLineWidth(5); 
+	ofSetLineWidth(lineWidth);
 	for(int j = 0; j <=dimY; j++)
 	{
 		glBegin(GL_LINE_STRIP);
@@ -778,14 +752,11 @@ void ofxField2D::drawFieldLinesHorizontal()
 		}
 		glEnd();  
 	}
-	ofPopStyle(); 
 }
 
 void ofxField2D::drawFieldVelocityHorizontal()
 {
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 		
-	ofSetLineWidth(5); 
+	ofSetLineWidth(lineWidth);
 	for(int j = 0; j <=dimY; j++)
 	{
 		glBegin(GL_LINE_STRIP);
@@ -796,7 +767,6 @@ void ofxField2D::drawFieldVelocityHorizontal()
 		}
 		glEnd();  
 	}
-	ofPopStyle(); 	
 }
 
 void ofxField2D::drawFieldAroundMe(float radius, ofVec2f loc, ofVec3f color)
@@ -813,9 +783,7 @@ void ofxField2D::drawFieldAroundMe(float radius, ofVec2f loc, ofVec3f color)
 	float i9 = ofMap(loc.x+radius*2,0,width,1,dimX); 
 	float j9 = ofMap(loc.y+radius*2,0,height,1,dimY);
 
-    ofPushStyle();  
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA); 			
-	ofSetLineWidth(3); 
+	ofSetLineWidth(lineWidth);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);    
 	
 	for(int j = (int)j0; j <=j9; j++)
@@ -836,9 +804,7 @@ void ofxField2D::drawFieldAroundMe(float radius, ofVec2f loc, ofVec3f color)
 		}
 		glEnd();  
 	}
-	ofSetLineWidth(1);    
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);   
-	ofPopStyle(); 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 int ofxField2D::getWidth(){

@@ -47,20 +47,19 @@ public:
     
     void setColor(ofColor _color); 
     //Drawing Field Functions
-    void drawField(); 
-    void drawFieldGrid(); 
-    void drawFieldGridWire(); 
-    void drawFieldMesh(); 
-    void drawFieldVectorMesh(); 
-    void drawFieldLinesVertical(); 
-    void drawFieldVelocityVertical();
-    void drawFieldLinesHorizontal();
-    void drawFieldVelocityHorizontal();    
-    void drawFieldAroundMe(float radius, ofVec2f loc, ofVec3f color); 
-    
     //Drawing Density Functions
-    void drawDensity();
-	
+    virtual void drawDensity();    
+    virtual void drawField();
+    virtual void drawFieldGrid();
+    virtual void drawFieldGridWire();
+    virtual void drawFieldMesh();
+    virtual void drawFieldVectorMesh();
+    virtual void drawFieldLinesVertical();
+    virtual void drawFieldVelocityVertical();
+    virtual void drawFieldLinesHorizontal();
+    virtual void drawFieldVelocityHorizontal();
+    virtual void drawFieldAroundMe(float radius, ofVec2f loc, ofVec3f color);
+    
 	// size
 	int getWidth();
 	int getHeight();

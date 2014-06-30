@@ -33,10 +33,10 @@ public:
 	void setID(int _sid);
 
     float getDelta();
-	void setColor(ofColor _color);
-	ofColor& getColor();
-	void setColorAlpha(float _alpha);
-	float getColorAlpha();
+	void setColor(ofColor _color, int index =0);
+	ofColor& getColor(int index = 0);
+	void setColorAlpha(float _alpha, int index = 0);
+	float getColorAlpha(int index = 0);
 
 protected:
 	float restDist;
@@ -47,5 +47,6 @@ protected:
 	ofVec3f p1force;
 	ofVec3f p2force;	    
 	int sid; 
-    ofColor color; 
+    ofColor color1;
+    ofColor color2;
 };

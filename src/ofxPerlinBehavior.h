@@ -9,7 +9,7 @@ public:
     ~ofxPerlinBehavior();
     
     void setup();
-    void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
+    virtual void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
     
     float *getNoiseScalePtr();
     void setNoiseScalePtr(float *_noiseScale);

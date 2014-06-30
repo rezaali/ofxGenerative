@@ -17,7 +17,8 @@ void ofxBoundaryBehavior::setup()
 
 void ofxBoundaryBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
 {
-    if(pos.x < left){
+    if(pos.x < left)
+    {
         pos.x = left;
         vel.x *= particle->getRestitution();
     }
@@ -27,7 +28,8 @@ void ofxBoundaryBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f 
         vel.x *= particle->getRestitution();
     }
     
-    if(pos.y < top){
+    if(pos.y < top)
+    {
         pos.y = top;
         vel.y *= particle->getRestitution();
     }

@@ -43,6 +43,7 @@ void ofxRParticle::init()
     pos = ofVec3f(0,0,0);           //Current Position
     ppos = ofVec3f(0,0,0);          //Previous Position
     home = ofVec3f(0,0,0);          //Original Home Position
+    delta = ofVec3f(0,0,0);          //Delta Home - Pos
     vel = ofVec3f(0,0,0);           //Velocity Vector
     acc = ofVec3f(0,0,0);           //Acceleration Vector
     color = ofColor(255,0,0,255);   //Default Color: Red
@@ -72,7 +73,9 @@ ofVec3f& ofxRParticle::calculateAcceleration(ofVec3f &pos, ofVec3f &vel, float d
 {
     ppos.set(pos); 
     acc.set(0);
-    for(vector<ofxBehavior *>::iterator bit = (*behaviors).begin(); bit != (*behaviors).end(); bit++)
+    vector<ofxBehavior *>::iterator bit = (*behaviors).begin();
+    vector<ofxBehavior *>::iterator ebit = (*behaviors).end();
+    for(; bit != ebit; ++bit)
     {
         ofxBehavior *b = (*bit);
         if(b->isEnabled())
@@ -81,13 +84,31 @@ ofVec3f& ofxRParticle::calculateAcceleration(ofVec3f &pos, ofVec3f &vel, float d
         }
     }
     
-    for(vector<ofVec3f *>::iterator it = springForces.begin(); it != springForces.end(); ++it)
+    updateSpringForces();
+    updateExternalForces();
+    
+    acc.limit(*accLimit);
+    return acc;
+}
+
+void ofxRParticle::updateSpringForces()
+{
+    vector<ofVec3f *>::iterator it = springForces.begin();
+    vector<ofVec3f *>::iterator eit = springForces.end();
+    for(; it != eit; ++it)
     {
         acc+= *(*it)/(float)springForces.size();
     }
+}
 
-    acc.limit(*accLimit);
-    return acc;
+void ofxRParticle::updateExternalForces()
+{
+    vector<ofVec3f *>::iterator it = externalForces.begin();
+    vector<ofVec3f *>::iterator eit = externalForces.end();
+    for(; it != eit; ++it)
+    {
+        acc+= *(*it)/(float)externalForces.size();
+    }
 }
 
 void ofxRParticle::setRadius(float _radius)
@@ -120,6 +141,11 @@ void ofxRParticle::setHome(ofVec3f _home)
     home = _home;
 }
 
+void ofxRParticle::setDelta(ofVec3f _delta)
+{
+    delta = _delta;
+}
+
 void ofxRParticle::setHome(float _x, float _y, float _z)
 {
     home.x = _x; home.y = _y; home.z = _z;
@@ -128,6 +154,12 @@ void ofxRParticle::setHome(float _x, float _y, float _z)
 void ofxRParticle::setColor(ofColor _color)
 {
     color = _color;
+}
+
+void ofxRParticle::setColor(ofColor _color, float _alpha)
+{
+    color = _color;
+    setColorAlpha(_alpha);
 }
 
 void ofxRParticle::setDamping(float _damping)
@@ -273,6 +305,11 @@ ofVec3f& ofxRParticle::getPos()
 ofVec3f& ofxRParticle::getHome()
 {
     return home;
+}
+
+ofVec3f& ofxRParticle::getDelta()
+{
+    return delta;
 }
 
 ofVec3f& ofxRParticle::getPpos()

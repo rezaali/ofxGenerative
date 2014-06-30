@@ -12,14 +12,19 @@ public:
 	virtual ~ofxRParticle();	
 	virtual void init();
     ofVec3f& calculateAcceleration(ofVec3f &pos, ofVec3f &vel, float dt);
+    virtual void updateSpringForces();
+    virtual void updateExternalForces();
+
 	void setRadius(float _radius);
     void setPos(ofVec3f _pos);
     void setPpos(ofVec3f _ppos);
     void setVel(ofVec3f _vel);
     void setAcc(ofVec3f _acc);
     void setHome(ofVec3f _home);
+    void setDelta(ofVec3f _delta);
     void setHome(float _x, float _y, float _z);
     void setColor(ofColor _color);
+    void setColor(ofColor _color, float _alpha);
     void setDamping(float _damping);
     void setDampingPtr(float *_damping);
     float& getDamping(); 
@@ -51,6 +56,7 @@ public:
 	ofVec3f& getPos();
 	ofVec3f& getHome();
     ofVec3f& getPpos();
+    ofVec3f& getDelta();
     ofVec3f& getVel();
 	ofVec3f& getAcc();
 	ofColor& getColor();
@@ -74,6 +80,7 @@ public:
     ofVec3f acc;
     ofVec3f home;
     ofVec3f ppos;  //Properties
+    ofVec3f delta;
     
     vector<ofVec3f *> externalForces;
     vector<ofVec3f *> springForces;

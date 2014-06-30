@@ -41,25 +41,23 @@ Derivative ofxSolver::evaluate(ofxRParticle* particle, ofVec3f *iPos, ofVec3f *i
 
 void ofxSolver::update(ofxRParticle* particle)
 {
+    ofVec3f *ppos = particle->getPposPtr();
+    ofVec3f *pos = particle->getPosPtr();
+    ofVec3f *vel = particle->getVelPtr();
+    
+    ppos->set(*pos);
+    
+    a = evaluate(particle, pos, vel, 0.0f, zero);
+    b = evaluate(particle, pos, vel, (*dt/2.0), a);
+    c = evaluate(particle, pos, vel, (*dt/2.0), b);
+    d = evaluate(particle, pos, vel, *dt, c);
+
     if(!particle->isFixed())
     {
-        ofVec3f *ppos = particle->getPposPtr();
-        ofVec3f *pos = particle->getPosPtr();
-        ofVec3f *vel = particle->getVelPtr();
-        
-        ppos->set(*pos);
-        
-        a = evaluate(particle, pos, vel, 0.0f, zero);
-        b = evaluate(particle, pos, vel, (*dt/2.0), a);
-        c = evaluate(particle, pos, vel, (*dt/2.0), b);
-        d = evaluate(particle, pos, vel, *dt, c);
-        
         *pos += (*dt/6.0) * (a.dpdt + 2.0f*(b.dpdt + c.dpdt) + d.dpdt);
         *vel += (*dt/6.0) * (a.dvdt + 2.0f*(b.dvdt + c.dvdt) + d.dvdt);
         vel->limit(particle->getVelocityLimit());
     }
-    
-//    (*vel)*=particle.getDamping();
 }
 
 float *ofxSolver::getDtPtr()

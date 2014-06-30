@@ -16,7 +16,8 @@ void ofxSpring::init()
     p1force = ofVec3f(0,0,0);
     p2force = ofVec3f(0,0,0);
     sid = -1;
-    color = ofColor(255, 15);
+    color1 = ofColor(255, 15);
+    color2 = ofColor(255, 15);
 }
 
 ofxSpring::~ofxSpring()
@@ -53,7 +54,7 @@ void ofxSpring::draw()
 {
     if(p1 != NULL && p2 != NULL)
     {
-        ofSetColor(color);
+        ofSetColor(color1);
         ofLine(p1->x,p1->y,p1->z, p2->x,p2->y,p2->z);
     }
 }
@@ -151,22 +152,50 @@ float ofxSpring::getDelta()
     return delta;
 }
 
-void ofxSpring::setColor(ofColor _color)
+void ofxSpring::setColor(ofColor _color, int index)
 {
-    color = _color;
+    if(index)
+    {
+        color2 = _color;
+    }
+    else
+    {
+        color1 = _color;
+    }
 }
 
-ofColor& ofxSpring::getColor()
+ofColor& ofxSpring::getColor(int index)
 {
-    return color;
+    if(index)
+    {
+        return color2;
+    }
+    else
+    {
+        return color1;
+    }
 }
 
-void ofxSpring::setColorAlpha(float _alpha)
+void ofxSpring::setColorAlpha(float _alpha, int index)
 {
-    color.a = _alpha;
+    if(index)
+    {
+        color2.a = _alpha;
+    }
+    else
+    {
+        color1.a = _alpha;
+    }
 }
 
-float ofxSpring::getColorAlpha()
+float ofxSpring::getColorAlpha(int index)
 {
-    return color.a;
+    if(index)
+    {
+        return color2.a;
+    }
+    else
+    {
+        return color1.a;
+    }
 }

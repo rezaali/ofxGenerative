@@ -3,6 +3,7 @@
 
 #include "ofVec3f.h"
 #include "ofxMesh.h"
+#include "ofxEdge.h"
 #include "ofxHomingBehavior.h"
 #include "ofxMeshParticleData.h"
 
@@ -75,10 +76,12 @@ public:
         mesh = _mesh;
     }
     
-    void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
+    virtual void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
     {
-        ofVec3f delta = particle->getHome()-pos;
         ofxMeshParticleData *data = (ofxMeshParticleData *) particle->getData();
+        ofxVertex *v = data->getVertex();
+        particle->setHome(v->getPos());
+        ofVec3f delta = particle->getHome()-pos;
         data->addToTrail(pos);
         
         float fftLevel = 1.0;
@@ -88,8 +91,7 @@ public:
         }
         
         if(delta.lengthSquared() < *distanceThreshold && (*bActivate) && fftLevel > *fftThreshold)
-        {
-            ofxVertex *v = data->getVertex();
+        {         
             if(*bTargetPoint)
             {
                 ofxVertex *other = v->getClosestNeighborFrom(*target);
@@ -223,7 +225,7 @@ public:
         fftBufferSize = _fftBufferSize;
     }
     
-private:
+protected:
     float *fftBuffer;
     int fftBufferSize;
     ofxMesh *mesh;

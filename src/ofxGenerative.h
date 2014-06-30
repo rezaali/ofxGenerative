@@ -74,6 +74,7 @@
 
 //Behaviors
 #include "ofxBehavior.h"
+#include "ofxForceBehavior.h"
 #include "ofxSphericalAttractionBehavior.h"
 #include "ofxRingAttractionBehavior.h"
 #include "ofxHomingBehavior.h"
@@ -89,3 +90,4 @@
 #include "ofxFieldEffectBehavior.h"
 #include "ofxBoundaryBehavior.h"
 #include "ofxElectroStaticNeighborBehavior.h"
+#include "ofxMeshHomingBehavior.h"

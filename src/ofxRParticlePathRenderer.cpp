@@ -1,5 +1,5 @@
 #include "ofxRParticlePathRenderer.h"
-#include "ofxMeshParticleData.h"
+#include "ofxParticlePathData.h"
 
 ofxRParticlePathRenderer::ofxRParticlePathRenderer() : ofxRParticleRenderer()
 {
@@ -28,7 +28,7 @@ void ofxRParticlePathRenderer::draw()
     ofSetLineWidth(*lineWidth);
     for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); ++it)
     {
-        ofxMeshParticleData *data = (ofxMeshParticleData *) (*it)->getData();
+        ofxParticlePathData *data = (ofxParticlePathData *) (*it)->getData();
         ofColor *clr = (*it)->getColorPtr();
         ofSetColor(*clr);
         glBegin(GL_LINE_STRIP);
