@@ -6,7 +6,7 @@ class ofxRParticlePathRenderer : public ofxRParticleRenderer
 {
 public:
     ofxRParticlePathRenderer();
-    ~ofxRParticlePathRenderer();
+    virtual ~ofxRParticlePathRenderer();
     
     virtual void setup();
     virtual void draw();

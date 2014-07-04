@@ -33,10 +33,10 @@ void ofxRParticlePathRenderer::draw()
         ofSetColor(*clr);
         glBegin(GL_LINE_STRIP);
         int length = data->getTrailLength();
-        for(int i = 0; i < length; i++)
+        for(int i = 0; i < length; ++i)
         {
-            ofVec3f pos = data->trail[i];
-            glVertex3f(pos.x,pos.y,pos.z);
+            ofVec3f tpos = data->trail[i];
+            glVertex3fv(tpos.getPtr()); 
         }
         glEnd();
     }

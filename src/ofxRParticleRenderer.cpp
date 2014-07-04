@@ -43,31 +43,18 @@ ofxRParticleRenderer::~ofxRParticleRenderer()
 void ofxRParticleRenderer::draw()
 {
     activateBlending(); 
-    //
-////    glDisable(GL_DEPTH_TEST);
-////    glEnableClientState( GL_VERTEX_ARRAY );
-////    glEnableClientState( GL_COLOR_ARRAY );
-////    glVertexPointer( 3, GL_FLOAT, sizeof(ofxRParticle *), &(*particles)[0]->pos);
-////    glColorPointer( 4, GL_UNSIGNED_BYTE, sizeof(ofxRParticle *),  &(*particles)[0]->color );
-//    glPointSize(*pointSize);
-////    glDrawArrays( GL_POINTS, 0, (*particles).size() );
-////    
-////    glDisableClientState( GL_VERTEX_ARRAY );
-////    glDisableClientState( GL_COLOR_ARRAY );
-
-    glPointSize(*pointSize);
+    glPointSize(getPointSize());
     glBegin(GL_POINTS);
     for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); ++it)
     {
-        ofVec3f *pos = (*it)->getPosPtr();     
-        ofColor *clr = (*it)->getColorPtr();
-        ofSetColor(*clr);
-        glNormal3f((*it)->getRadius()*(*pointSize)*10.0,0,0);
-        glVertex3f(pos->x,pos->y,pos->z);
+        ofxRParticle *p = (*it);
+        ofVec3f &pos = p->getPos();
+        ofColor &clr = p->getColor();
+        ofSetColor(clr);
+        glNormal3f(p->getRadius()*(getPointSize())*10.0,0,0);
+        glVertex3fv(pos.getPtr());
     }
     glEnd();
-    
-        
 }
 
 void ofxRParticleRenderer::activateBlending()

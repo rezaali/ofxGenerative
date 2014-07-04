@@ -85,8 +85,7 @@ ofVec3f& ofxRParticle::calculateAcceleration(ofVec3f &pos, ofVec3f &vel, float d
     }
     
     updateSpringForces();
-    updateExternalForces();
-    
+    updateExternalForces();    
     acc.limit(*accLimit);
     return acc;
 }

@@ -17,46 +17,55 @@ void ofxBoundaryBehavior::setup()
 
 void ofxBoundaryBehavior::actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
 {
-    if(pos.x < left)
+    if(pos.x < xMin)
     {
-        pos.x = left;
+        pos.x = xMin;
         vel.x *= particle->getRestitution();
     }
-    else if(pos.x > right)
+    else if(pos.x > xMax)
     {
-        pos.x = right;
+        pos.x = xMax;
         vel.x *= particle->getRestitution();
     }
     
-    if(pos.y < top)
+    if(pos.y > yMax)
     {
-        pos.y = top;
+        pos.y = yMax;
         vel.y *= particle->getRestitution();
     }
-    else if(pos.y > bottom)
+    else if(pos.y < yMin)
     {
-        pos.y = bottom;
+        pos.y = yMin;
         vel.y *= particle->getRestitution();
     }
     
-    if(pos.z > near)
+    if(pos.z > zMax)
     {
-        pos.z = near;
+        pos.z = zMax;
         vel.z *= (*particle->restitution);
     }
-    else if(pos.z < far)
+    else if(pos.z < zMin)
     {
-        pos.z = far;
+        pos.z = zMin;
         vel.z *= (*particle->restitution);
     }
 }
 
-void ofxBoundaryBehavior::setBoundary(float _left, float _top, float _right, float _bottom, float _near, float _far)
+void ofxBoundaryBehavior::setBoundary(float _xMin, float _xMax, float _yMin, float _yMax, float _zMin, float _zMax)
 {
-    left = _left;
-    right = _right;
-    top = _top;
-    bottom = _bottom;
-    near = _near;
-    far = _far;
+    xMin = _xMin;
+    xMax = _xMax;
+    
+    yMin = _yMin;
+    yMax = _yMax;
+    
+    zMin = _zMin;
+    zMax = _zMax;
+    
+//    cout << "xMin: " << xMin << endl;
+//    cout << "xMax: " << xMax << endl;
+//    cout << "yMin: " << yMin << endl;
+//    cout << "yMax: " << yMax << endl;
+//    cout << "zMin: " << zMin << endl;
+//    cout << "zMax: " << zMax << endl;
 }

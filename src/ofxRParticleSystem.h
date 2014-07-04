@@ -45,9 +45,6 @@ public:
     float *getAccelerationLimitPtr();
     float getAccelerationLimit();
     
-    int* getCountPtr();
-    void setCount(int _count);
-    void setCountPtr(int *_count);
     int getCount();
     
     ofxRParticle * removeParticle(ofxRParticle *particle); 
@@ -71,12 +68,9 @@ protected:
     
     bool bAllocatedRenderer;
     ofxRParticleRenderer *renderer;
-    
-    ofxSolver *solver;
 
-    int uniqueIDs;
-    bool bAllocatedCount;
-    int *count;
+    bool bAllocatedSolver;
+    ofxSolver *solver;
     
     bool bAllocatedDt;
     float *dt;

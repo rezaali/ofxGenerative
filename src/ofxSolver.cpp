@@ -28,10 +28,10 @@ void ofxSolver::setup()
     
 }
 
-Derivative ofxSolver::evaluate(ofxRParticle* particle, ofVec3f *iPos, ofVec3f *iVel, float _dt, Derivative &d)
+Derivative ofxSolver::evaluate(ofxRParticle* particle, ofVec3f &iPos, ofVec3f &iVel, float _dt, Derivative &d)
 {
-    ofVec3f p = *iPos + d.dpdt*_dt;
-    ofVec3f v = *iVel + d.dvdt*_dt;
+    ofVec3f p = iPos + d.dpdt*_dt;
+    ofVec3f v = iVel + d.dvdt*_dt;
     
     Derivative output;
     output.dpdt = v;
@@ -41,22 +41,19 @@ Derivative ofxSolver::evaluate(ofxRParticle* particle, ofVec3f *iPos, ofVec3f *i
 
 void ofxSolver::update(ofxRParticle* particle)
 {
-    ofVec3f *ppos = particle->getPposPtr();
-    ofVec3f *pos = particle->getPosPtr();
-    ofVec3f *vel = particle->getVelPtr();
-    
-    ppos->set(*pos);
+    ofVec3f &pos = particle->getPos();
+    ofVec3f &vel = particle->getVel();
     
     a = evaluate(particle, pos, vel, 0.0f, zero);
-    b = evaluate(particle, pos, vel, (*dt/2.0), a);
-    c = evaluate(particle, pos, vel, (*dt/2.0), b);
-    d = evaluate(particle, pos, vel, *dt, c);
+    b = evaluate(particle, pos, vel, (getDt()/2.0f), a);
+    c = evaluate(particle, pos, vel, (getDt()/2.0f), b);
+    d = evaluate(particle, pos, vel, getDt(), c);
 
     if(!particle->isFixed())
     {
-        *pos += (*dt/6.0) * (a.dpdt + 2.0f*(b.dpdt + c.dpdt) + d.dpdt);
-        *vel += (*dt/6.0) * (a.dvdt + 2.0f*(b.dvdt + c.dvdt) + d.dvdt);
-        vel->limit(particle->getVelocityLimit());
+        pos += (getDt()/6.0f) * (a.dpdt + 2.0f*(b.dpdt + c.dpdt) + d.dpdt);
+        vel += (getDt()/6.0f) * (a.dvdt + 2.0f*(b.dvdt + c.dvdt) + d.dvdt);
+        vel.limit(particle->getVelocityLimit());
     }
 }
 

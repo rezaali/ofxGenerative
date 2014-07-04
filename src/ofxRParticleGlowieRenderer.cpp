@@ -24,7 +24,7 @@ void ofxRParticleGlowieRenderer::draw()
     for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
     {
         glPushMatrix();
-        ofVec3f pos = (*it)->getPos();
+        ofVec3f &pos = (*it)->getPos();
         glTranslatef(pos.x, pos.y, pos.z);
         billBoard(); 
         ofSetColor((*it)->getColor());

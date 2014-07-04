@@ -6,14 +6,9 @@ class ofxBoundaryBehavior : public ofxBehavior
 {
 public:
     ofxBoundaryBehavior();
-    ~ofxBoundaryBehavior();
+    virtual ~ofxBoundaryBehavior();
     void setup();
-    void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
-    void setBoundary(float _left, float _right, float _top, float _bottom, float _near = 0, float _far = 0);
-    float left;
-    float right;
-    float top;
-    float bottom;
-    float far;
-    float near;
+    virtual void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt);
+    virtual void setBoundary(float _xMin, float _xMax, float _yMin, float _yMax, float _zMin = 0, float _zMax = 0);
+    float xMin, xMax, yMin, yMax, zMin, zMax;    
 };

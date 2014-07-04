@@ -34,12 +34,11 @@ ofxRParticleSystem::~ofxRParticleSystem()
         delete velLimit;
     }
     
-    if(bAllocatedCount)
+    if(bAllocatedSolver)
     {
-        delete count;
+        delete solver;
     }
-
-    delete solver;
+    
     if(bAllocatedRenderer)
     {
         delete renderer;
@@ -62,18 +61,14 @@ void ofxRParticleSystem::clear()
     vector<ofxRParticle *>::iterator eit = particles.end();
     for(; it != eit; ++it)
     {
-        delete (*it);
+        ofxRParticle *p = (*it);
+        delete p;
     }
     particles.clear();
-    uniqueIDs = 0;
 }
 
 void ofxRParticleSystem::init()
 {
-    uniqueIDs = 0;
-    bAllocatedCount = true;
-    count = new int;
-
     bAllocatedDamping = true;
     damping = new float;
     
@@ -90,7 +85,6 @@ void ofxRParticleSystem::init()
     dt = new float;
     
     setDt(1.0);
-    setCount(0);
     setDamping(.25);
     setRestitution(1.0);
     setAccerationLimit(5.0);
@@ -100,8 +94,8 @@ void ofxRParticleSystem::init()
     renderer = new ofxRParticleRenderer();
     renderer->setParticlesPtr(&particles);
 
-    solver = NULL;
-    setSolver(new ofxVerletSolver());
+    bAllocatedSolver = true;
+    solver = new ofxVerletSolver();
     solver->setDtPtr(dt);
 }
 
@@ -113,25 +107,28 @@ void ofxRParticleSystem::update()
     {
         (*bit)->update();
     }
-    int id = 0;
+    
     vector<ofxRParticle *>::iterator it = particles.begin();
     vector<ofxRParticle *>::iterator eit = particles.end();
     for(; it != eit; ++it)
     {
-        if((*it)->isDead())
+        ofxRParticle *p = (*it);
+        if(p->isDead())
         {
-            ofxRParticle *p = (*it);
-            particles.erase(it);
             delete p;
-            uniqueIDs--;
-            setCount(uniqueIDs); 
+            particles.erase(it);
+            break;
         }
-        else
-        {
-            solver->update(*it);            
-            (*it)->setID(id);            
-            id++;
-        }
+    }
+
+    int id = 0;
+    it = particles.begin();
+    eit = particles.end();
+    for(; it != eit; ++it)
+    {
+        solver->update(*it);
+        (*it)->setID(id);            
+        id++;
     }
 }
 
@@ -147,15 +144,12 @@ void ofxRParticleSystem::addBehavior(ofxBehavior *b)
 
 void ofxRParticleSystem::addParticle(ofxRParticle* p)
 {
-    uniqueIDs++;
-    p->setID(uniqueIDs);
     p->setDampingPtr(damping);
     p->setRestitutionPtr(restitution);
     p->setAccerationLimitPtr(accLimit);
     p->setVelocityLimitPtr(velLimit);
     p->setBehaviorVectorPtr(&behaviors);
     particles.push_back(p);
-    setCount(uniqueIDs);
 }
 
 void ofxRParticleSystem::setDt(float _dt)
@@ -284,32 +278,12 @@ float ofxRParticleSystem::getAccelerationLimit()
     return *accLimit;
 }
 
-void ofxRParticleSystem::setCount(int _count)
-{
-    *count = _count;
-}
-
-void ofxRParticleSystem::setCountPtr(int *_count)
-{
-    if(bAllocatedCount)
-    {
-        delete count;
-        bAllocatedCount = false;
-    }
-    count = _count;
-}
-
-int* ofxRParticleSystem::getCountPtr()
-{
-    return count;
-}
-
 int ofxRParticleSystem::getCount()
 {
-    return *count;
+    return particles.size();
 }
 
-ofxRParticle * ofxRParticleSystem::removeParticle(ofxRParticle *particle)
+ofxRParticle* ofxRParticleSystem::removeParticle(ofxRParticle *particle)
 {
     vector<ofxRParticle *>::iterator it = particles.begin();
     vector<ofxRParticle *>::iterator eit = particles.end();
@@ -318,8 +292,6 @@ ofxRParticle * ofxRParticleSystem::removeParticle(ofxRParticle *particle)
         ofxRParticle *p = (*it);
         if(p == particle)
         {
-            uniqueIDs--;
-            setCount(uniqueIDs);
             particles.erase(it);
             return p; 
         }
@@ -369,9 +341,10 @@ ofxRParticleRenderer* ofxRParticleSystem::getRendererPtr()
 
 void ofxRParticleSystem::setSolver(ofxSolver *_solver)
 {
-    if(solver != NULL)
+    if(bAllocatedSolver)
     {
         delete solver;
+        bAllocatedSolver = false;
     }
     solver = _solver;
     solver->setDtPtr(dt);

@@ -11,8 +11,8 @@ public:
     
     ~ofxGrid()
     {
-        delete[] values;
-        delete[] valuesOld;
+        deleteValues();
+        deleteColors(); 
     }
     
     void setup()
@@ -27,14 +27,28 @@ public:
         
         values = NULL;
         valuesOld = NULL;
+        colors = NULL;
         
         bGenerate = true;
     }
     
-    void generate()
+    void deleteColors()
     {
-        calculateProperties();
+        if(colors != NULL)
+        {
+            delete[] colors;
+            colors = NULL;
+        }
         
+        if(colorsOld != NULL)
+        {
+            delete[] colorsOld;
+            colorsOld = NULL;
+        }
+    }
+    
+    void deleteValues()
+    {
         if(values != NULL)
         {
             delete[] values;
@@ -46,14 +60,29 @@ public:
             delete[] valuesOld;
             valuesOld  = NULL;
         }
+    }
+    
+    void generate()
+    {
+        calculateProperties();
+        
+        deleteValues();
+        deleteColors();
         
         numPerPlane = numX*numY;
         size = numPerPlane*numZ;
         values = new float[size];
         valuesOld = new float[size];
+        colors = new ofColor[size];
+        colorsOld = new ofColor[size];
         
-        memset(values, 0.0, sizeof(float) * size);
-        memset(valuesOld, 0.0, sizeof(float) * size);
+        for(int i = 0; i < size; ++i)
+        {
+            colors[i] = ofColor(255);
+            colorsOld[i] = ofColor(255);
+            values[i] = 0.0;
+            valuesOld[i] = 0.0;
+        }
 
         bGenerate = false;
     }
@@ -84,6 +113,12 @@ public:
     
     ofVec3f getCellCenterFromCellID(float gid)
     {
+        ofVec3f pos = getCellIndexFromID(gid);
+        return getCellCenterFromCellIndex(pos);
+    }
+    
+    ofVec3f getCellIndexFromID(float gid)
+    {
         double x, xFract, xInt;
         double y, yFract, yInt;
         double z, zFract, zInt;
@@ -94,7 +129,65 @@ public:
         yFract = modf(y ,&yInt);
         x = yFract*numX;
         xFract = modf(x ,&xInt);
-        return getCellCenterFromCellIndex(floor(x), floor(y), floor(z));
+
+        return ofVec3f(floor(x), floor(y), floor(z));
+    }
+    
+    ofColor getCellColorFromCellID(float gid)
+    {
+        ofVec3f pos = getCellIndexFromID(gid);
+        return getCellColorFromCellIndex(pos);
+    }
+    
+    ofColor &getCellColorFromCellIndex(ofVec3f &pos)
+    {
+        return getCellColorFromCellIndex(pos.x, pos.y, pos.z);
+    }
+
+    ofColor &getCellColorFromCellIndex(int _x, int _y, int _z)
+    {
+        return colors[ID(_x, _y, _z)];
+    }
+    
+    ofColor &getCellColorFromGlobalSpace(ofVec3f &pos)
+    {
+        return getCellColorFromGlobalSpace(pos.x, pos.y, pos.z);
+    }
+    
+    ofColor &getCellColorFromGlobalSpace(float _x, float _y, float _z)
+    {
+        if(insideGrid(_x, _y, _z))
+        {
+            return colors[getCellIDFromGlobalSpace(_x, _y, _z)];
+        }
+        return colors[getCellIDFromGlobalSpace(0,0,0)];
+    }
+    
+    void setCellColorFromCellIndex(ofVec3f &pos, ofColor &color)
+    {
+        setCellColorFromCellIndex(pos.x, pos.y, pos.z, color);
+    }
+    
+    void setCellColorFromCellIndex(int _x, int _y, int _z, ofColor &color)
+    {
+        colors[ID(_x, _y, _z)] = color;
+        colorsOld[ID(_x, _y, _z)] = color;
+    }
+    
+    void setCellColorFromGlobalSpace(ofVec3f &pos, ofColor &color)
+    {
+        setCellColorFromGlobalSpace(pos.x, pos.y, pos.z, color);
+    }
+    
+    void setCellColorFromGlobalSpace(float _x, float _y, float _z, ofColor &color)
+    {
+        if(insideGrid(_x, _y, _z))
+        {
+            int gid = getCellIDFromGlobalSpace(_x, _y, _z);
+            colors[gid] = color;
+            colorsOld[gid] = color;
+            return;
+        }
     }
     
     ofVec3f getCellCenterFromCellIndex(ofVec3f &pos)
@@ -206,6 +299,17 @@ public:
         }
     }
     
+    
+    void setCellValueFromCellIndex(ofVec3f &pos, float value)
+    {
+        setCellValueFromCellIndex(pos.x, pos.y, pos.z, value);
+    }
+    
+    void setCellValueFromCellIndex(float _x, float _y, float _z, float value)
+    {
+        values[ID(_x, _y, _z)] = value;
+        valuesOld[ID(_x, _y, _z)] = value;
+    }
     
     void diffuse()
     {
@@ -461,6 +565,8 @@ public:
     
     float *values = NULL;
     float *valuesOld = NULL;
+    ofColor *colors = NULL;
+    ofColor *colorsOld = NULL;
     
     float decayParam;
     float diffusionParam;
