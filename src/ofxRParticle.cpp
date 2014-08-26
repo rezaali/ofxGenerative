@@ -63,7 +63,7 @@ void ofxRParticle::init()
     bAllocatedAccLimit = true;
     bAllocatedVelLimit = true;
     
-    setRadius(2.0);                  //Particles Radius (All Particles are spherical for now)
+    setRadius(1.0);                  //Particles Radius (All Particles are spherical for now)
     mass = 1.0;                     //Mass of particle, important for f = ma
     lifeTime = 1.0;                 //How Long the Particle Lives for
     dead = false;                   //Whether the Particle is still alive

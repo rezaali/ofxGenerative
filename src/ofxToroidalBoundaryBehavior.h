@@ -10,61 +10,60 @@ public:
         setup();
     }
     
-    ~ofxToroidalBoundaryBehavior()
+    virtual ~ofxToroidalBoundaryBehavior()
     {
-        if(bAllocatedSpace)
+        if(bAllocatedCenter)
         {
-            delete space;
+            delete center;
         }
     }
     
     void setup()
-    {
-        space = new float();
-        bAllocatedSpace = true;
-        setSpace(1.0);
+    {        
+        center = new ofVec3f(0,0,0);
+        bAllocatedCenter = true;
     }
     
-    void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
+    virtual void actUpon(ofxRParticle *particle, ofVec3f &pos, ofVec3f &vel, ofVec3f &acc, float dt)
     {
         float s = getSpace();
         bool bOutSide = false;
         
-        if(pos.x > (xMax-s))
+        if(pos.x > ((xMax-s)+center->x))
         {
-            pos.x = xMin+s;
+            pos.x = xMin+s + center->x;
             particle->setPpos(pos);
             bOutSide = true;
         }
-        else if(pos.x < (xMin+s))
+        else if(pos.x < ((xMin+s)+center->x))
         {
-            pos.x = xMax-s;
-            particle->setPpos(pos);
-            bOutSide = true;
-        }
-        
-        if(pos.y > (yMax-s))
-        {
-            pos.y = yMin+s;
-            particle->setPpos(pos);
-            bOutSide = true;
-        }
-        else if(pos.y < (yMin+s))
-        {
-            pos.y = yMax-s;
+            pos.x = xMax-s + center->x;
             particle->setPpos(pos);
             bOutSide = true;
         }
         
-        if(pos.z > (zMax-s))
+        if(pos.y > ((yMax-s)+center->y))
         {
-            pos.z = zMin+s;
+            pos.y = yMin+s + center->y;
             particle->setPpos(pos);
             bOutSide = true;
         }
-        else if(pos.z < (zMin+s))
+        else if(pos.y < ((yMin+s)+center->y))
         {
-            pos.z = zMax-s;
+            pos.y = yMax-s + center->y;
+            particle->setPpos(pos);
+            bOutSide = true;
+        }
+        
+        if(pos.z > ((zMax-s)+center->z))
+        {
+            pos.z = zMin+s + center->z;
+            particle->setPpos(pos);
+            bOutSide = true;
+        }
+        else if(pos.z < ((zMin+s)+center->z))
+        {
+            pos.z = zMax-s + center->z;
             particle->setPpos(pos);
             bOutSide = true;
         }
@@ -73,42 +72,41 @@ public:
 //            particle->setDead(true);
 //        }
     }
-    
+
     void draw()
     {
         ofNoFill();
         ofSetColor(255, 100);
-        ofDrawBox(0,0,0, xMax-xMin, yMax-yMin, zMax-zMin);
-
+        ofDrawBox(getCenter(), xMax-xMin, yMax-yMin, zMax-zMin);
         ofSetColor(255, 0, 0, 100);
-        ofDrawBox(0,0,0, xMax-xMin - getSpace()*2.0, yMax-yMin - getSpace()*2.0, zMax-zMin - getSpace()*2.0);
-    }
-
-    void setSpace(float _space)
-    {
-        *space = _space;
+        ofDrawBox(getCenter(), xMax-xMin - getSpace()*2.0, yMax-yMin - getSpace()*2.0, zMax-zMin - getSpace()*2.0);
     }
     
-    void setSpacePtr(float *_space)
+    void setCenter(ofVec3f _center)
     {
-        if(bAllocatedSpace)
+        *center = _center;
+    }
+    
+    void setCenterPtr(ofVec3f *_center)
+    {
+        if(bAllocatedCenter)
         {
-            delete space;
-            bAllocatedSpace = false;
+            delete center;
+            bAllocatedCenter = false;
         }
-        space = _space;
+        center = _center;
     }
     
-    float getSpace()
+    ofVec3f &getCenter()
     {
-        return *space;
+        return *center;
     }
     
-    float *getSpacePtr()
+    ofVec3f *getCenterPtr()
     {
-        return space;
+        return center;
     }
     
-    float *space;
-    bool bAllocatedSpace;
+    ofVec3f *center;
+    bool bAllocatedCenter;    
 };

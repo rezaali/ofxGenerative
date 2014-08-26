@@ -16,6 +16,14 @@ public:
     void setLineWidthPtr(float *_lineWidth);
     float getLineWidth();
     
+    void setMinAlpha(float _minAlpha);
+    float* getMinAlphaPtr();
+    void setMinAlphaPtr(float *_minAlpha);
+    float getMinAlpha();
+    
     bool bAllocatedLineWidth; 
     float *lineWidth;
+    
+    bool bAllocatedMinAlpha;
+    float *minAlpha;
 };

@@ -105,7 +105,11 @@ void ofxRParticleSystem::update()
     vector<ofxBehavior *>::iterator ebit = behaviors.end();
     for(; bit != ebit; ++bit)
     {
-        (*bit)->update();
+        ofxBehavior *b = (*bit);
+        if(b->isEnabled())
+        {
+            b->update();
+        }
     }
     
     vector<ofxRParticle *>::iterator it = particles.begin();

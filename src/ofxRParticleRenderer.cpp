@@ -9,7 +9,7 @@ void ofxRParticleRenderer::init()
 {
     bAllocatedPointSize = true;
     pointSize = new float;
-    setPointSize(1.0);
+    setPointSize(5.0);
     bAllocatedAdditiveBlending = true;
     bAdditiveBlending = new bool;
     setAdditiveBlending(true);

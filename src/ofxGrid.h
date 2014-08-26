@@ -207,12 +207,8 @@ public:
     
     ofVec3f getCellCenterFromGlobalSpace(float _x, float _y, float _z)
     {
-        if(insideGrid(_x, _y, _z))
-        {
-            ofVec3f gpt = getCellIndexFromGlobalSpace(_x, _y, _z);
-            return getCellCenterFromCellIndex(gpt.x, gpt.y, gpt.z);
-        }
-        return ofVec3f(0,0,0);
+        ofVec3f gpt = getCellIndexFromGlobalSpace(_x, _y, _z);
+        return getCellCenterFromCellIndex(gpt.x, gpt.y, gpt.z);
     }
     
     ofVec3f getCellIndexFromGlobalSpace(ofVec3f &pos)

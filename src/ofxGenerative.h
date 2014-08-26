@@ -94,3 +94,4 @@
 #include "ofxNearElectroStaticBehavior.h"
 #include "ofxMeshHomingBehavior.h"
 #include "ofxToroidalBoundaryBehavior.h"
+#include "ofxSuperShapeBehavior.h"
