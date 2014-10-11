@@ -61,8 +61,5 @@ void ofxRParticleGlowieRenderer::billBoard()
     ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
     axisOfRotation.normalize();
     
-    glRotatef(-zAxis->getPos(), 0.0, 0.0, 1.0);
-    glRotatef(-yAxis->getPos(), 0.0, 1.0, 0.0);
-    glRotatef(-xAxis->getPos(), 1.0, 0.0, 0.0);
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
