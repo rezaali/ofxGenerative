@@ -1,0 +1,876 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04BA750C680ACF86B6F5EB8F /* ofxFieldEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E87F87F36BCA97B2E05C0D11 /* ofxFieldEffectorBehavior.cpp */; };
+		04E40AF9CB380130C2846E86 /* ofxDistorterBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E358AFD51682E14CA775F4 /* ofxDistorterBehavior.cpp */; };
+		0749A7BC3CAFA6D6250F0604 /* ofxBoundaryBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06FDDDC8E05E51ED5D7E046 /* ofxBoundaryBehavior.cpp */; };
+		0C36A8C695997CEBAFBA9AD8 /* ofxElectroStaticNeighborBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 091FF71E832A99A6C1F099BF /* ofxElectroStaticNeighborBehavior.cpp */; };
+		152D04F164C424DFE57C4E1E /* ofxVortexBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7431C9AC6E4C0C1498B6558F /* ofxVortexBehavior.cpp */; };
+		1C08B45CAA43288CF0CAAF94 /* ofxForceBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DC4E5C509C24E9914C574 /* ofxForceBehavior.cpp */; };
+		1C1B6F785F4C4A436418B5E6 /* ofxLorentzBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 021F38AB5658C992D75869E4 /* ofxLorentzBehavior.cpp */; };
+		2D298DA1E4F332F1AF49F14B /* ofxRParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F38D5ABB130D2D130A25B29A /* ofxRParticle.cpp */; };
+		369D5A63422511201F70EAAD /* ofxElectroStaticBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C17D5A1B9272EF9E52204F48 /* ofxElectroStaticBehavior.cpp */; };
+		37B0487E1F8517B8278F36C8 /* ofxRParticleGlowieRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DAC925A888BB60A301A32B /* ofxRParticleGlowieRenderer.cpp */; };
+		38A7CB165DCFBF60ECF65B28 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABD06242539292BB6BF7AA38 /* ofxSwarmBehavior.cpp */; };
+		53655C7CED2821910F86571B /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04F8447D49347C1F6ED21F2C /* ofxBehavior.cpp */; };
+		55A08D3E7F4A572C38886546 /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96D901F19738236AF901C8B5 /* ofxPerlinBehavior.cpp */; };
+		6411AE5364935A95CC41F7E0 /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67D683EFF22D202D3FD0364A /* ofxRParticleSystem.cpp */; };
+		6F4B333198A0C70DE8C214E7 /* ofxSpringSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D736624C42B8E2BE35B2977 /* ofxSpringSystem.cpp */; };
+		73A159A4F81F914E2821B16E /* ofxRParticlePathRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 676C7F9DC4BEFE6DB2E9FDDC /* ofxRParticlePathRenderer.cpp */; };
+		74E4CCEB8F878C5076E73F01 /* ofxFace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F27FCF34632DE140B703726E /* ofxFace.cpp */; };
+		74E619AC6659015AF9A8EFF6 /* ofxHomingBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4EB2E4ABBB09979379E9EFC /* ofxHomingBehavior.cpp */; };
+		7510871638CF605DB0E0117C /* ofxVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDEE0227D0232C4227E9B750 /* ofxVertex.cpp */; };
+		811C3929F77D7FA01B1EF902 /* ofxRParticlePlexusRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7489AC96EE715D563706D54B /* ofxRParticlePlexusRenderer.cpp */; };
+		81409E03F11459EA0601802D /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42E97E3D4B7F2B73ADDA01DD /* ofxDamperBehavior.cpp */; };
+		8FC5A480B1AAF62BB09B93A2 /* ofxEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87222B472031E5E685768362 /* ofxEdge.cpp */; };
+		91CCA8027BF63101FF240FA6 /* ofxRParticleRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD0D49443543D04B96988413 /* ofxRParticleRenderer.cpp */; };
+		9A5E3B994F542CA5A91186B9 /* ofxSpring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4741A988EB485ED901359F97 /* ofxSpring.cpp */; };
+		A7364181440C95951B533A6F /* ofxRingAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3876ECF23B684830B55E15E /* ofxRingAttractionBehavior.cpp */; };
+		A7A25981BDE72784E462D29B /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21A19130323515B141EABF89 /* ofxBufferEffectorBehavior.cpp */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		BE06BAAA2959844F72E990CE /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C12D63D7F8DEA049F78A9DBA /* ofxVerletSolver.cpp */; };
+		DFC64ED0BAA1E805C86780E5 /* ofxSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D31F4A78DC1391F558BFB4DA /* ofxSolver.cpp */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
+		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7DF79B5C4B8B9361FD373CA /* ofxFieldEffectBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1029F5308107E279FC0B6D94 /* ofxFieldEffectBehavior.cpp */; };
+		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		EEA7AEAFED076B33006C3498 /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E02FFCF0A91C865ED57587ED /* ofxField2D.cpp */; };
+		F3073502F50EE3F2DA307A00 /* ofxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D5FEC704551D454E7427927 /* ofxMesh.cpp */; };
+		F8F64B5DF74D726C19DBECFB /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552834DEFC20F8C3596B624B /* ofxSphericalAttractionBehavior.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00183C06EF545535307C7A50 /* ofxParticleTouch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxParticleTouch.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxParticleTouch.h; sourceTree = SOURCE_ROOT; };
+		021F38AB5658C992D75869E4 /* ofxLorentzBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLorentzBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxLorentzBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		04F8447D49347C1F6ED21F2C /* ofxBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		091FF71E832A99A6C1F099BF /* ofxElectroStaticNeighborBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxElectroStaticNeighborBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxElectroStaticNeighborBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		0CC14093127B0DFF28EE4781 /* ofxRParticleGlowieRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticleGlowieRenderer.h; path = ../../../addons/ofxGenerative/src/ofxRParticleGlowieRenderer.h; sourceTree = SOURCE_ROOT; };
+		0D379A507A691CDC4CC46D1B /* ofxFieldEffectBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFieldEffectBehavior.h; path = ../../../addons/ofxGenerative/src/ofxFieldEffectBehavior.h; sourceTree = SOURCE_ROOT; };
+		1029F5308107E279FC0B6D94 /* ofxFieldEffectBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFieldEffectBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxFieldEffectBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		1D5FEC704551D454E7427927 /* ofxMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMesh.cpp; path = ../../../addons/ofxMesh/src/ofxMesh.cpp; sourceTree = SOURCE_ROOT; };
+		1D736624C42B8E2BE35B2977 /* ofxSpringSystem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpringSystem.cpp; path = ../../../addons/ofxGenerative/src/ofxSpringSystem.cpp; sourceTree = SOURCE_ROOT; };
+		21A19130323515B141EABF89 /* ofxBufferEffectorBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBufferEffectorBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxBufferEffectorBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		2213C5762B3629215769DB3B /* ofxRezaParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRezaParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxRezaParticle.h; sourceTree = SOURCE_ROOT; };
+		264793B0F91A1FC4211096B9 /* ofxRingAttractionBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRingAttractionBehavior.h; path = ../../../addons/ofxGenerative/src/ofxRingAttractionBehavior.h; sourceTree = SOURCE_ROOT; };
+		270EED1966E2B603D8F751DF /* ofxMeshParticleData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMeshParticleData.h; path = ../../../addons/ofxGenerative/src/ofxMeshParticleData.h; sourceTree = SOURCE_ROOT; };
+		2777FBBC37E5885ECF09E5DB /* ofxCircle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxCircle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxCircle.h; sourceTree = SOURCE_ROOT; };
+		2D5FF802B09FB13D6D55CA06 /* ofxFace.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFace.h; path = ../../../addons/ofxMesh/src/ofxFace.h; sourceTree = SOURCE_ROOT; };
+		375B3C175823CB54D59B1335 /* ofxBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBehavior.h; path = ../../../addons/ofxGenerative/src/ofxBehavior.h; sourceTree = SOURCE_ROOT; };
+		37CF8871ED15218CDB01508E /* ofxRParticlePathRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticlePathRenderer.h; path = ../../../addons/ofxGenerative/src/ofxRParticlePathRenderer.h; sourceTree = SOURCE_ROOT; };
+		3842A3C62A912C8607F621D0 /* ofxSmartParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSmartParticleSystem.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxSmartParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		3B6A8EC68CF891AE82CD1365 /* ofxTrailParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTrailParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxTrailParticle.h; sourceTree = SOURCE_ROOT; };
+		42E97E3D4B7F2B73ADDA01DD /* ofxDamperBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxDamperBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxDamperBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		4741A988EB485ED901359F97 /* ofxSpring.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpring.cpp; path = ../../../addons/ofxGenerative/src/ofxSpring.cpp; sourceTree = SOURCE_ROOT; };
+		4829E50651F2387BEF3A7061 /* ofxSmartParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSmartParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxSmartParticle.h; sourceTree = SOURCE_ROOT; };
+		4AF5593A83FA4D02222723B6 /* ofxField2D.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxField2D.h; path = ../../../addons/ofxGenerative/src/ofxField2D.h; sourceTree = SOURCE_ROOT; };
+		4B4671B8673CDB2153168127 /* ofxDistorterBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDistorterBehavior.h; path = ../../../addons/ofxGenerative/src/ofxDistorterBehavior.h; sourceTree = SOURCE_ROOT; };
+		4DC0F0048B0193C00ED94F4D /* ofxRParticleRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticleRenderer.h; path = ../../../addons/ofxGenerative/src/ofxRParticleRenderer.h; sourceTree = SOURCE_ROOT; };
+		5135737DECD46AE7A11F98D7 /* ofxSuperShapeBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSuperShapeBehavior.h; path = ../../../addons/ofxGenerative/src/ofxSuperShapeBehavior.h; sourceTree = SOURCE_ROOT; };
+		52A6290C2559070CBFC32D14 /* ofxMesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMesh.h; path = ../../../addons/ofxMesh/src/ofxMesh.h; sourceTree = SOURCE_ROOT; };
+		552834DEFC20F8C3596B624B /* ofxSphericalAttractionBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSphericalAttractionBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxSphericalAttractionBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		56461B90D247D4577270A642 /* ofxToroidalBoundaryBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToroidalBoundaryBehavior.h; path = ../../../addons/ofxGenerative/src/ofxToroidalBoundaryBehavior.h; sourceTree = SOURCE_ROOT; };
+		5691AA6699BC86D36B2E7674 /* ofxPerlinBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPerlinBehavior.h; path = ../../../addons/ofxGenerative/src/ofxPerlinBehavior.h; sourceTree = SOURCE_ROOT; };
+		56B2A7B105C4C4D36C174562 /* ofxBoidSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBoidSystem.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxBoidSystem.h; sourceTree = SOURCE_ROOT; };
+		591E80DF54FE99F5914AA817 /* ofxElectroStaticBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxElectroStaticBehavior.h; path = ../../../addons/ofxGenerative/src/ofxElectroStaticBehavior.h; sourceTree = SOURCE_ROOT; };
+		623AE5283C16B993ACADCAAD /* ofxLorentzBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLorentzBehavior.h; path = ../../../addons/ofxGenerative/src/ofxLorentzBehavior.h; sourceTree = SOURCE_ROOT; };
+		625AAA8BCB51AED49C4BEE42 /* ofxRParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticle.h; path = ../../../addons/ofxGenerative/src/ofxRParticle.h; sourceTree = SOURCE_ROOT; };
+		62E358AFD51682E14CA775F4 /* ofxDistorterBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxDistorterBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxDistorterBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		66379E58896621AA6E9180BE /* ofxGenerative.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGenerative.h; path = ../../../addons/ofxGenerative/src/ofxGenerative.h; sourceTree = SOURCE_ROOT; };
+		676C7F9DC4BEFE6DB2E9FDDC /* ofxRParticlePathRenderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticlePathRenderer.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticlePathRenderer.cpp; sourceTree = SOURCE_ROOT; };
+		67D683EFF22D202D3FD0364A /* ofxRParticleSystem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticleSystem.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticleSystem.cpp; sourceTree = SOURCE_ROOT; };
+		69F85E752FE07B74AE577FB0 /* ofxSmartParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSmartParticle.h; path = ../../../addons/ofxGenerative/src/ofxSmartParticle.h; sourceTree = SOURCE_ROOT; };
+		6B6AC979D3297082BB2F20DD /* ofxHOCParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxHOCParticleSystem.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxHOCParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		6D0DC4E5C509C24E9914C574 /* ofxForceBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxForceBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxForceBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		6FB01BA936638F6AB9CF9407 /* ofxEdge.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxEdge.h; path = ../../../addons/ofxMesh/src/ofxEdge.h; sourceTree = SOURCE_ROOT; };
+		7431C9AC6E4C0C1498B6558F /* ofxVortexBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxVortexBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxVortexBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		7489AC96EE715D563706D54B /* ofxRParticlePlexusRenderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticlePlexusRenderer.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticlePlexusRenderer.cpp; sourceTree = SOURCE_ROOT; };
+		75948A3C214066D18BC552FC /* ofxRParticleData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticleData.h; path = ../../../addons/ofxGenerative/src/ofxRParticleData.h; sourceTree = SOURCE_ROOT; };
+		76A78FF37CBBD94219AA90D2 /* ofxHOCParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxHOCParticleSystem.h; path = ../../../addons/ofxGenerative/src/ofxHOCParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		76ACDC0E7DDB2D9F58C37653 /* ofxBufferEffectorBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBufferEffectorBehavior.h; path = ../../../addons/ofxGenerative/src/ofxBufferEffectorBehavior.h; sourceTree = SOURCE_ROOT; };
+		7A98B3914DBF507ED9474157 /* ofxSwarmBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSwarmBehavior.h; path = ../../../addons/ofxGenerative/src/ofxSwarmBehavior.h; sourceTree = SOURCE_ROOT; };
+		7CC900802E0E3B36D3C85C83 /* ofxNeighborParticleData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNeighborParticleData.h; path = ../../../addons/ofxGenerative/src/ofxNeighborParticleData.h; sourceTree = SOURCE_ROOT; };
+		807C82524AF427E1009F65DD /* ofxFieldEffectorBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFieldEffectorBehavior.h; path = ../../../addons/ofxGenerative/src/ofxFieldEffectorBehavior.h; sourceTree = SOURCE_ROOT; };
+		82819980CEFF4DD41972D80F /* ofxDamperBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDamperBehavior.h; path = ../../../addons/ofxGenerative/src/ofxDamperBehavior.h; sourceTree = SOURCE_ROOT; };
+		87222B472031E5E685768362 /* ofxEdge.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEdge.cpp; path = ../../../addons/ofxMesh/src/ofxEdge.cpp; sourceTree = SOURCE_ROOT; };
+		87323235AC0B70E3870AC6E4 /* ofxSolver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSolver.h; path = ../../../addons/ofxGenerative/src/ofxSolver.h; sourceTree = SOURCE_ROOT; };
+		885CEBA7BBA0335EB5FA3B0D /* ofxSpringSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpringSystem.h; path = ../../../addons/ofxGenerative/src/ofxSpringSystem.h; sourceTree = SOURCE_ROOT; };
+		8F4736B4DDE175468F2E7179 /* ofxVerletSolver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxVerletSolver.h; path = ../../../addons/ofxGenerative/src/ofxVerletSolver.h; sourceTree = SOURCE_ROOT; };
+		96D901F19738236AF901C8B5 /* ofxPerlinBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPerlinBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxPerlinBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		A4803B27599331DD93CB5B4A /* ofxBoidParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBoidParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxBoidParticle.h; sourceTree = SOURCE_ROOT; };
+		ABD06242539292BB6BF7AA38 /* ofxSwarmBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSwarmBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxSwarmBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		ABE9C84ED5ACE354431AD554 /* ofxBoundaryBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBoundaryBehavior.h; path = ../../../addons/ofxGenerative/src/ofxBoundaryBehavior.h; sourceTree = SOURCE_ROOT; };
+		AF78CFBD6E53EF5FED18E973 /* ofxParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxParticle.h; sourceTree = SOURCE_ROOT; };
+		B06FDDDC8E05E51ED5D7E046 /* ofxBoundaryBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBoundaryBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxBoundaryBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		B230FA56F3637819C35A36F5 /* ofxVertex.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxVertex.h; path = ../../../addons/ofxMesh/src/ofxVertex.h; sourceTree = SOURCE_ROOT; };
+		B8D843E93120F065A620873D /* ofxGrid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGrid.h; path = ../../../addons/ofxGenerative/src/ofxGrid.h; sourceTree = SOURCE_ROOT; };
+		B9FED954CDB1ED2938914AAA /* ofxParticlePathData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxParticlePathData.h; path = ../../../addons/ofxGenerative/src/ofxParticlePathData.h; sourceTree = SOURCE_ROOT; };
+		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		BCD399FF50DDDD66CFC32692 /* ofxSpring.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpring.h; path = ../../../addons/ofxGenerative/src/ofxSpring.h; sourceTree = SOURCE_ROOT; };
+		BD02CEE330AF4275D4B87FF4 /* ofxSphericalAttractionBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSphericalAttractionBehavior.h; path = ../../../addons/ofxGenerative/src/ofxSphericalAttractionBehavior.h; sourceTree = SOURCE_ROOT; };
+		C12D63D7F8DEA049F78A9DBA /* ofxVerletSolver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxVerletSolver.cpp; path = ../../../addons/ofxGenerative/src/ofxVerletSolver.cpp; sourceTree = SOURCE_ROOT; };
+		C17D5A1B9272EF9E52204F48 /* ofxElectroStaticBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxElectroStaticBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxElectroStaticBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		C3876ECF23B684830B55E15E /* ofxRingAttractionBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRingAttractionBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxRingAttractionBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		C3E36547E02F21E98DB9F68C /* ofxBoidParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBoidParticle.h; path = ../../../addons/ofxGenerative/src/ofxBoidParticle.h; sourceTree = SOURCE_ROOT; };
+		C4EB2E4ABBB09979379E9EFC /* ofxHomingBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxHomingBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxHomingBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		CC585A0E8DE584E441FA3C99 /* ofxRezaParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRezaParticleSystem.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxRezaParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		CE461D7F8723441CFDE625E3 /* ofxRParticlePlexusRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticlePlexusRenderer.h; path = ../../../addons/ofxGenerative/src/ofxRParticlePlexusRenderer.h; sourceTree = SOURCE_ROOT; };
+		CE5D3D416A0FA93938D77E6B /* ofxForceBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxForceBehavior.h; path = ../../../addons/ofxGenerative/src/ofxForceBehavior.h; sourceTree = SOURCE_ROOT; };
+		CF63E63B8BB4316106D2AD30 /* ofxNearElectroStaticBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNearElectroStaticBehavior.h; path = ../../../addons/ofxGenerative/src/ofxNearElectroStaticBehavior.h; sourceTree = SOURCE_ROOT; };
+		D22EF54A09143E78DE259B5D /* ofx2DHomingBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofx2DHomingBehavior.h; path = ../../../addons/ofxGenerative/src/ofx2DHomingBehavior.h; sourceTree = SOURCE_ROOT; };
+		D2DAC925A888BB60A301A32B /* ofxRParticleGlowieRenderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticleGlowieRenderer.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticleGlowieRenderer.cpp; sourceTree = SOURCE_ROOT; };
+		D31F4A78DC1391F558BFB4DA /* ofxSolver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSolver.cpp; path = ../../../addons/ofxGenerative/src/ofxSolver.cpp; sourceTree = SOURCE_ROOT; };
+		D3A08A9CC3C9FACB4562A8C0 /* ofxElectroStaticNeighborBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxElectroStaticNeighborBehavior.h; path = ../../../addons/ofxGenerative/src/ofxElectroStaticNeighborBehavior.h; sourceTree = SOURCE_ROOT; };
+		D7CECD93DC422A33992CCFFA /* ofxHomingBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxHomingBehavior.h; path = ../../../addons/ofxGenerative/src/ofxHomingBehavior.h; sourceTree = SOURCE_ROOT; };
+		D7E1DBD6005B9C4F70CA6832 /* ofxHOCParticle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxHOCParticle.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxHOCParticle.h; sourceTree = SOURCE_ROOT; };
+		D8C35C8DD0B55394F23BDA11 /* ofxMeshHomingBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMeshHomingBehavior.h; path = ../../../addons/ofxGenerative/src/ofxMeshHomingBehavior.h; sourceTree = SOURCE_ROOT; };
+		DCF6E2CCE968244B001F7CAD /* ofxSuperShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSuperShape.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxSuperShape.h; sourceTree = SOURCE_ROOT; };
+		DDEE0227D0232C4227E9B750 /* ofxVertex.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxVertex.cpp; path = ../../../addons/ofxMesh/src/ofxVertex.cpp; sourceTree = SOURCE_ROOT; };
+		E02FFCF0A91C865ED57587ED /* ofxField2D.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxField2D.cpp; path = ../../../addons/ofxGenerative/src/ofxField2D.cpp; sourceTree = SOURCE_ROOT; };
+		E0B756C1697A2299F8804C91 /* ofxGenericShape.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGenericShape.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxGenericShape.h; sourceTree = SOURCE_ROOT; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E4B69B5B0A3A1756003C02F2 /* example_basicDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example_basicDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E58E357198CACA0067076559 /* ofx1DExtruder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofx1DExtruder.h; path = ../../../addons/ofxGenerative/src/ofx1DExtruder.h; sourceTree = SOURCE_ROOT; };
+		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E87F87F36BCA97B2E05C0D11 /* ofxFieldEffectorBehavior.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFieldEffectorBehavior.cpp; path = ../../../addons/ofxGenerative/src/ofxFieldEffectorBehavior.cpp; sourceTree = SOURCE_ROOT; };
+		EEB2617BA4487EF840D7E537 /* ofxRParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRParticleSystem.h; path = ../../../addons/ofxGenerative/src/ofxRParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		EEB2DCDA68DF28B143457B70 /* ofxVortexBehavior.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxVortexBehavior.h; path = ../../../addons/ofxGenerative/src/ofxVortexBehavior.h; sourceTree = SOURCE_ROOT; };
+		F13FBADE1F9C122CF88D8477 /* ofxParticleSystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxParticleSystem.h; path = ../../../addons/ofxGenerative/src/Legacy/ofxParticleSystem.h; sourceTree = SOURCE_ROOT; };
+		F27FCF34632DE140B703726E /* ofxFace.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxFace.cpp; path = ../../../addons/ofxMesh/src/ofxFace.cpp; sourceTree = SOURCE_ROOT; };
+		F38D5ABB130D2D130A25B29A /* ofxRParticle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticle.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticle.cpp; sourceTree = SOURCE_ROOT; };
+		FB75141BDE12F8A908E30C2A /* ofxFieldAgitator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFieldAgitator.h; path = ../../../addons/ofxGenerative/src/ofxFieldAgitator.h; sourceTree = SOURCE_ROOT; };
+		FD0D49443543D04B96988413 /* ofxRParticleRenderer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxRParticleRenderer.cpp; path = ../../../addons/ofxGenerative/src/ofxRParticleRenderer.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
+				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
+				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
+				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F124AB165B9627929268597 /* ofxGenerative */ = {
+			isa = PBXGroup;
+			children = (
+				9C9635EE0C8ECFC84B6F58F2 /* src */,
+			);
+			name = ofxGenerative;
+			sourceTree = "<group>";
+		};
+		8A46BA835DF23BE5FC7FECCE /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				A4803B27599331DD93CB5B4A /* ofxBoidParticle.h */,
+				56B2A7B105C4C4D36C174562 /* ofxBoidSystem.h */,
+				2777FBBC37E5885ECF09E5DB /* ofxCircle.h */,
+				E0B756C1697A2299F8804C91 /* ofxGenericShape.h */,
+				D7E1DBD6005B9C4F70CA6832 /* ofxHOCParticle.h */,
+				6B6AC979D3297082BB2F20DD /* ofxHOCParticleSystem.h */,
+				AF78CFBD6E53EF5FED18E973 /* ofxParticle.h */,
+				F13FBADE1F9C122CF88D8477 /* ofxParticleSystem.h */,
+				00183C06EF545535307C7A50 /* ofxParticleTouch.h */,
+				2213C5762B3629215769DB3B /* ofxRezaParticle.h */,
+				CC585A0E8DE584E441FA3C99 /* ofxRezaParticleSystem.h */,
+				4829E50651F2387BEF3A7061 /* ofxSmartParticle.h */,
+				3842A3C62A912C8607F621D0 /* ofxSmartParticleSystem.h */,
+				DCF6E2CCE968244B001F7CAD /* ofxSuperShape.h */,
+				3B6A8EC68CF891AE82CD1365 /* ofxTrailParticle.h */,
+			);
+			name = Legacy;
+			sourceTree = "<group>";
+		};
+		9C9635EE0C8ECFC84B6F58F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8A46BA835DF23BE5FC7FECCE /* Legacy */,
+				E58E357198CACA0067076559 /* ofx1DExtruder.h */,
+				D22EF54A09143E78DE259B5D /* ofx2DHomingBehavior.h */,
+				04F8447D49347C1F6ED21F2C /* ofxBehavior.cpp */,
+				375B3C175823CB54D59B1335 /* ofxBehavior.h */,
+				C3E36547E02F21E98DB9F68C /* ofxBoidParticle.h */,
+				B06FDDDC8E05E51ED5D7E046 /* ofxBoundaryBehavior.cpp */,
+				ABE9C84ED5ACE354431AD554 /* ofxBoundaryBehavior.h */,
+				21A19130323515B141EABF89 /* ofxBufferEffectorBehavior.cpp */,
+				76ACDC0E7DDB2D9F58C37653 /* ofxBufferEffectorBehavior.h */,
+				42E97E3D4B7F2B73ADDA01DD /* ofxDamperBehavior.cpp */,
+				82819980CEFF4DD41972D80F /* ofxDamperBehavior.h */,
+				62E358AFD51682E14CA775F4 /* ofxDistorterBehavior.cpp */,
+				4B4671B8673CDB2153168127 /* ofxDistorterBehavior.h */,
+				C17D5A1B9272EF9E52204F48 /* ofxElectroStaticBehavior.cpp */,
+				591E80DF54FE99F5914AA817 /* ofxElectroStaticBehavior.h */,
+				091FF71E832A99A6C1F099BF /* ofxElectroStaticNeighborBehavior.cpp */,
+				D3A08A9CC3C9FACB4562A8C0 /* ofxElectroStaticNeighborBehavior.h */,
+				E02FFCF0A91C865ED57587ED /* ofxField2D.cpp */,
+				4AF5593A83FA4D02222723B6 /* ofxField2D.h */,
+				FB75141BDE12F8A908E30C2A /* ofxFieldAgitator.h */,
+				1029F5308107E279FC0B6D94 /* ofxFieldEffectBehavior.cpp */,
+				0D379A507A691CDC4CC46D1B /* ofxFieldEffectBehavior.h */,
+				E87F87F36BCA97B2E05C0D11 /* ofxFieldEffectorBehavior.cpp */,
+				807C82524AF427E1009F65DD /* ofxFieldEffectorBehavior.h */,
+				6D0DC4E5C509C24E9914C574 /* ofxForceBehavior.cpp */,
+				CE5D3D416A0FA93938D77E6B /* ofxForceBehavior.h */,
+				66379E58896621AA6E9180BE /* ofxGenerative.h */,
+				B8D843E93120F065A620873D /* ofxGrid.h */,
+				76A78FF37CBBD94219AA90D2 /* ofxHOCParticleSystem.h */,
+				C4EB2E4ABBB09979379E9EFC /* ofxHomingBehavior.cpp */,
+				D7CECD93DC422A33992CCFFA /* ofxHomingBehavior.h */,
+				021F38AB5658C992D75869E4 /* ofxLorentzBehavior.cpp */,
+				623AE5283C16B993ACADCAAD /* ofxLorentzBehavior.h */,
+				D8C35C8DD0B55394F23BDA11 /* ofxMeshHomingBehavior.h */,
+				270EED1966E2B603D8F751DF /* ofxMeshParticleData.h */,
+				CF63E63B8BB4316106D2AD30 /* ofxNearElectroStaticBehavior.h */,
+				7CC900802E0E3B36D3C85C83 /* ofxNeighborParticleData.h */,
+				B9FED954CDB1ED2938914AAA /* ofxParticlePathData.h */,
+				96D901F19738236AF901C8B5 /* ofxPerlinBehavior.cpp */,
+				5691AA6699BC86D36B2E7674 /* ofxPerlinBehavior.h */,
+				C3876ECF23B684830B55E15E /* ofxRingAttractionBehavior.cpp */,
+				264793B0F91A1FC4211096B9 /* ofxRingAttractionBehavior.h */,
+				F38D5ABB130D2D130A25B29A /* ofxRParticle.cpp */,
+				625AAA8BCB51AED49C4BEE42 /* ofxRParticle.h */,
+				75948A3C214066D18BC552FC /* ofxRParticleData.h */,
+				D2DAC925A888BB60A301A32B /* ofxRParticleGlowieRenderer.cpp */,
+				0CC14093127B0DFF28EE4781 /* ofxRParticleGlowieRenderer.h */,
+				676C7F9DC4BEFE6DB2E9FDDC /* ofxRParticlePathRenderer.cpp */,
+				37CF8871ED15218CDB01508E /* ofxRParticlePathRenderer.h */,
+				7489AC96EE715D563706D54B /* ofxRParticlePlexusRenderer.cpp */,
+				CE461D7F8723441CFDE625E3 /* ofxRParticlePlexusRenderer.h */,
+				FD0D49443543D04B96988413 /* ofxRParticleRenderer.cpp */,
+				4DC0F0048B0193C00ED94F4D /* ofxRParticleRenderer.h */,
+				67D683EFF22D202D3FD0364A /* ofxRParticleSystem.cpp */,
+				EEB2617BA4487EF840D7E537 /* ofxRParticleSystem.h */,
+				69F85E752FE07B74AE577FB0 /* ofxSmartParticle.h */,
+				D31F4A78DC1391F558BFB4DA /* ofxSolver.cpp */,
+				87323235AC0B70E3870AC6E4 /* ofxSolver.h */,
+				552834DEFC20F8C3596B624B /* ofxSphericalAttractionBehavior.cpp */,
+				BD02CEE330AF4275D4B87FF4 /* ofxSphericalAttractionBehavior.h */,
+				4741A988EB485ED901359F97 /* ofxSpring.cpp */,
+				BCD399FF50DDDD66CFC32692 /* ofxSpring.h */,
+				1D736624C42B8E2BE35B2977 /* ofxSpringSystem.cpp */,
+				885CEBA7BBA0335EB5FA3B0D /* ofxSpringSystem.h */,
+				5135737DECD46AE7A11F98D7 /* ofxSuperShapeBehavior.h */,
+				ABD06242539292BB6BF7AA38 /* ofxSwarmBehavior.cpp */,
+				7A98B3914DBF507ED9474157 /* ofxSwarmBehavior.h */,
+				56461B90D247D4577270A642 /* ofxToroidalBoundaryBehavior.h */,
+				C12D63D7F8DEA049F78A9DBA /* ofxVerletSolver.cpp */,
+				8F4736B4DDE175468F2E7179 /* ofxVerletSolver.h */,
+				7431C9AC6E4C0C1498B6558F /* ofxVortexBehavior.cpp */,
+				EEB2DCDA68DF28B143457B70 /* ofxVortexBehavior.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				0F124AB165B9627929268597 /* ofxGenerative */,
+				D2A285E079999BB1FA2B2BC0 /* ofxMesh */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
+				E4C2424410CC5A17004149E2 /* AppKit.framework */,
+				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
+				E4C2424610CC5A17004149E2 /* IOKit.framework */,
+				E45BE9710E8CC7DD009D7055 /* AGL.framework */,
+				E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */,
+				E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */,
+				E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */,
+				E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */,
+				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
+				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
+				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+				E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */,
+				E7E077E715D3B6510020DFD4 /* QTKit.framework */,
+			);
+			name = "system frameworks";
+			sourceTree = "<group>";
+		};
+		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
+			);
+			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		D2A285E079999BB1FA2B2BC0 /* ofxMesh */ = {
+			isa = PBXGroup;
+			children = (
+				E1B1AB77A49870BD3F74D04F /* src */,
+			);
+			name = ofxMesh;
+			sourceTree = "<group>";
+		};
+		E1B1AB77A49870BD3F74D04F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				87222B472031E5E685768362 /* ofxEdge.cpp */,
+				6FB01BA936638F6AB9CF9407 /* ofxEdge.h */,
+				F27FCF34632DE140B703726E /* ofxFace.cpp */,
+				2D5FF802B09FB13D6D55CA06 /* ofxFace.h */,
+				1D5FEC704551D454E7427927 /* ofxMesh.cpp */,
+				52A6290C2559070CBFC32D14 /* ofxMesh.h */,
+				DDEE0227D0232C4227E9B750 /* ofxVertex.cpp */,
+				B230FA56F3637819C35A36F5 /* ofxVertex.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E45BE5980E8CC70C009D7055 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
+				BBAB23C913894ECA00AA2426 /* system frameworks */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E45BE5980E8CC70C009D7055 /* frameworks */,
+				E4B69B5B0A3A1756003C02F2 /* example_basicDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* example_basic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example_basic" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = example_basic;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* example_basicDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example_basic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* example_basic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				53655C7CED2821910F86571B /* ofxBehavior.cpp in Sources */,
+				0749A7BC3CAFA6D6250F0604 /* ofxBoundaryBehavior.cpp in Sources */,
+				A7A25981BDE72784E462D29B /* ofxBufferEffectorBehavior.cpp in Sources */,
+				81409E03F11459EA0601802D /* ofxDamperBehavior.cpp in Sources */,
+				04E40AF9CB380130C2846E86 /* ofxDistorterBehavior.cpp in Sources */,
+				369D5A63422511201F70EAAD /* ofxElectroStaticBehavior.cpp in Sources */,
+				0C36A8C695997CEBAFBA9AD8 /* ofxElectroStaticNeighborBehavior.cpp in Sources */,
+				EEA7AEAFED076B33006C3498 /* ofxField2D.cpp in Sources */,
+				E7DF79B5C4B8B9361FD373CA /* ofxFieldEffectBehavior.cpp in Sources */,
+				04BA750C680ACF86B6F5EB8F /* ofxFieldEffectorBehavior.cpp in Sources */,
+				1C08B45CAA43288CF0CAAF94 /* ofxForceBehavior.cpp in Sources */,
+				74E619AC6659015AF9A8EFF6 /* ofxHomingBehavior.cpp in Sources */,
+				1C1B6F785F4C4A436418B5E6 /* ofxLorentzBehavior.cpp in Sources */,
+				55A08D3E7F4A572C38886546 /* ofxPerlinBehavior.cpp in Sources */,
+				A7364181440C95951B533A6F /* ofxRingAttractionBehavior.cpp in Sources */,
+				2D298DA1E4F332F1AF49F14B /* ofxRParticle.cpp in Sources */,
+				37B0487E1F8517B8278F36C8 /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				73A159A4F81F914E2821B16E /* ofxRParticlePathRenderer.cpp in Sources */,
+				811C3929F77D7FA01B1EF902 /* ofxRParticlePlexusRenderer.cpp in Sources */,
+				91CCA8027BF63101FF240FA6 /* ofxRParticleRenderer.cpp in Sources */,
+				6411AE5364935A95CC41F7E0 /* ofxRParticleSystem.cpp in Sources */,
+				DFC64ED0BAA1E805C86780E5 /* ofxSolver.cpp in Sources */,
+				F8F64B5DF74D726C19DBECFB /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				9A5E3B994F542CA5A91186B9 /* ofxSpring.cpp in Sources */,
+				6F4B333198A0C70DE8C214E7 /* ofxSpringSystem.cpp in Sources */,
+				38A7CB165DCFBF60ECF65B28 /* ofxSwarmBehavior.cpp in Sources */,
+				BE06BAAA2959844F72E990CE /* ofxVerletSolver.cpp in Sources */,
+				152D04F164C424DFE57C4E1E /* ofxVortexBehavior.cpp in Sources */,
+				8FC5A480B1AAF62BB09B93A2 /* ofxEdge.cpp in Sources */,
+				74E4CCEB8F878C5076E73F01 /* ofxFace.cpp in Sources */,
+				F3073502F50EE3F2DA307A00 /* ofxMesh.cpp in Sources */,
+				7510871638CF605DB0E0117C /* ofxVertex.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxGenerative/libs,
+					../../../addons/ofxGenerative/src,
+					../../../addons/ofxGenerative/src/Legacy,
+					../../../addons/ofxMesh/libs,
+					../../../addons/ofxMesh/src,
+					../../../addons/ofxUI/libs,
+					../../../addons/ofxUI/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxGenerative/libs,
+					../../../addons/ofxGenerative/src,
+					../../../addons/ofxGenerative/src/Legacy,
+					../../../addons/ofxMesh/libs,
+					../../../addons/ofxMesh/src,
+					../../../addons/ofxUI/libs,
+					../../../addons/ofxUI/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				ICON = "$(ICON_NAME_DEBUG)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example_basic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example_basic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}
