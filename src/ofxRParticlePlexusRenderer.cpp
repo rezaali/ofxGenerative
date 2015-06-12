@@ -72,7 +72,7 @@ void ofxRParticlePlexusRenderer::draw()
 {
     activateBlending(); 
     ofSetLineWidth(*lineWidth);
-    
+    billBoard(); 
     ofSetRectMode(OF_RECTMODE_CENTER);
     for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
     {
@@ -83,7 +83,7 @@ void ofxRParticlePlexusRenderer::draw()
             glPushMatrix();
             ofVec3f pos = p->getPos();
             glTranslatef(pos.x, pos.y, pos.z);
-            billBoard();
+            ofRotate(angle, axis.x, axis.y, axis.z);
             ofSetColor(clr);
             float r = p->getRadius()*(*radiusScalar);
             glow->draw(0, 0, r, r);

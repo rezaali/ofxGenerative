@@ -45,7 +45,9 @@ void ofxRParticleRenderer::draw()
     activateBlending(); 
     glPointSize(getPointSize());
     glBegin(GL_POINTS);
-    for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); ++it)
+    vector<ofxRParticle *>::iterator it = (*particles).begin();
+    vector<ofxRParticle *>::iterator eit = (*particles).end();
+    for(; it != eit; ++it)
     {
         ofxRParticle *p = (*it);
         ofVec3f &pos = p->getPos();
@@ -55,6 +57,17 @@ void ofxRParticleRenderer::draw()
         glVertex3fv(pos.getPtr());
     }
     glEnd();
+}
+
+void ofxRParticleRenderer::setParticleAlpha(float _alpha)
+{
+    vector<ofxRParticle *>::iterator it = (*particles).begin();
+    vector<ofxRParticle *>::iterator eit = (*particles).end();
+    for(; it != eit; ++it)
+    {
+        ofxRParticle *p = (*it);
+        p->setColorAlpha(_alpha);
+    }
 }
 
 void ofxRParticleRenderer::activateBlending()

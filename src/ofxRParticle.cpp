@@ -96,7 +96,7 @@ void ofxRParticle::updateSpringForces()
     vector<ofVec3f *>::iterator eit = springForces.end();
     for(; it != eit; ++it)
     {
-        acc+= *(*it)/(float)springForces.size();
+        acc += *(*it)/(float)springForces.size();
     }
 }
 
@@ -106,7 +106,7 @@ void ofxRParticle::updateExternalForces()
     vector<ofVec3f *>::iterator eit = externalForces.end();
     for(; it != eit; ++it)
     {
-        acc+= *(*it)/(float)externalForces.size();
+        acc += *(*it)/(float)externalForces.size();
     }
 }
 

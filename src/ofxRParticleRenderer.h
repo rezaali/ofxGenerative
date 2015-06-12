@@ -18,6 +18,7 @@ public:
     float *getPointSizePtr();
     float getPointSize();
     
+    void setParticleAlpha(float _alpha);
     void setAdditiveBlending(bool _bAdditiveBlending);
     void setAdditiveBlendingPtr(bool *_bAdditiveBlending);
     bool *getAdditiveBlendingPtr();

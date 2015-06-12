@@ -429,7 +429,7 @@ void ofxField2D::advect(int DX, int DY, int b, float* d, float* d0, float* u, fl
     
     for(int i = 1; i <=DX; i++)
     {
-        for(int j = 0; j <=DY; j++)
+        for(int j = 1; j <=DY; j++)
         {
             x = i-dt0x*u[IX(i,j)];
             y = j-dt0y*v[IX(i,j)];         
@@ -462,8 +462,8 @@ void ofxField2D::advect(int DX, int DY, int b, float* d, float* d0, float* u, fl
             t1 = y-j0; 
             t0 = 1-t1;
             
-            d[IX(i,j)] = s0*(t0*d0[IX(i0,j0)]+t1*d0[IX(i0,j1)])  +
-            s1*(t0*d0[IX(i1,j0)]+t1*d0[IX(i1,j1)]); 
+            d[IX(i,j)] =    s0*(t0*d0[IX(i0,j0)]+t1*d0[IX(i0,j1)])  +
+                            s1*(t0*d0[IX(i1,j0)]+t1*d0[IX(i1,j1)]);
         }
     }
     set_bnd (DX,DY,b,d);

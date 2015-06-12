@@ -21,12 +21,15 @@ void ofxRParticleGlowieRenderer::draw()
 {
     activateBlending();
     ofSetRectMode(OF_RECTMODE_CENTER);
-    for(vector<ofxRParticle *>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
+    billBoard();
+    vector<ofxRParticle *>::iterator it = (*particles).begin();
+    vector<ofxRParticle *>::iterator eit = (*particles).end();    
+    for(; it != eit; ++it)
     {
         glPushMatrix();
         ofVec3f &pos = (*it)->getPos();
         glTranslatef(pos.x, pos.y, pos.z);
-        billBoard(); 
+        ofRotate(angle, axis.x, axis.y, axis.z);
         ofSetColor((*it)->getColor());
         float r = (*it)->getRadius();
         glow->draw(0, 0, r, r);
@@ -55,11 +58,14 @@ void ofxRParticleGlowieRenderer::setGlowImage(ofImage *_glow)
 
 void ofxRParticleGlowieRenderer::billBoard()
 {
-    ofVec3f objToCam = cam->getGlobalPosition(); 
-    objToCam.normalize();
-    float theta = objectLookAt.angle(objToCam);
-    ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
-    axisOfRotation.normalize();
+    ofVec3f camPos = cam->getPosition();
+    ofQuaternion camQuat = cam->getOrientationQuat();
     
-    glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
+    ofVec3f objLookAt = ofVec3f(0,0,1);
+    ofVec3f objPos = ofVec3f(0,0,0);
+    ofQuaternion objQuat;
+    objQuat.makeRotate(0, objLookAt);
+    
+    camQuat *= objQuat;
+    camQuat.getRotate(angle, axis);
 }
